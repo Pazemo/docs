@@ -8,7 +8,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='https://pazemo.com/signup'>Sign Up for a Developer Key</a>
+  - <a href='https://pazemo.com/signup'>Sign Up for a API Key</a>
   - <a href='https://api.stg.pazemo.com/explorer/'>Pazemo API Explorer</a>
 
 includes:
@@ -71,7 +71,7 @@ Our bank integration lets banks build Pazemo payments seamlessly into their own 
   - How do we handle customer support?
   - How do we harmonise customer onboarding and AML processes?
 
-Please contact infi@pazemo.com to get started.
+Please contact info@pazemo.com to get started.
 
 ## Affiliates
 
@@ -125,11 +125,12 @@ Using the product before integrating with our API will help you understand how o
 - Please note that our Fixed Rate functionality is intended to provide time for customers to send funds to Pazemo, while holding the rate for them. Pazemo is not a trading platform and the Fixed Rate functionality is automatically disabled if abusive behaviour (such as multiple transfer creation and selective completion) is detected.
 
 3. Choose the best tool for you
+
 - You don’t necessarily need to integrate with the API to make a large number of payouts. We have two ways you can do it:
 
-- Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Wise, and pay for the batch. No development effort needed.
+- Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Pazemo, and pay for the batch. No development effort needed.
 
-- API integration. Completely automate your payment process by sending payment orders via the Wise Platform API.
+- API integration. Completely automate your payment process by sending payment orders via the Pazemo Platform API.
 
 ## API access
 
@@ -137,37 +138,16 @@ Using the product before integrating with our API will help you understand how o
 
 > To authorize, use this code:
 
-```ruby
-require 'pazemo'
-
-api = Kittn::APIClient.authorize!('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx')
-```
-
-```python
-import pazemo
-
-api = kittn.authorize('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx')
-```
 
 ```shell
 # With shell, you can just pass the correct header with each request
 curl "api_endpoint_here"
-  -H "Authorization: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
-```
-
-```javascript
-const kittn = require('pazemo');
-
-let api = kittn.authorize('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx');
+  -H "Authorization: bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"
 ```
 
 > Make sure to replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx` with your API key.
 
 Sign up for a developer account and get your personal API token for our sandbox. https://pazemo.com/register
-
-NB! Two factor authentication (2FA) code for sandbox login is 111111.
-
-Your developer account will have some test money that you can use to start making payments in same way as you would in a live environment. You can get your API tokens in the Settings tab of your account page.
 
 Add your API token as header parameter to every request like this:
 
@@ -179,7 +159,7 @@ You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your persona
 
 ### Acquiring your API token
 
-Your API tokens section can be found at the bottom of the Settings page inside your Wise account. By default, you have no active tokens. You can issue new tokens after enabling 2-step login.
+Your API tokens section can be found at the bottom of the Settings page inside your Pazemo account. By default, you have no active tokens. You can issue new tokens after enabling 2-step login.
 
 We support tokens of two permission levels:
 
@@ -188,7 +168,7 @@ We support tokens of two permission levels:
 
 ### Keeping your API token safe
 
-Your API tokens should be guarded closely. They represent your identity and authorization and can be used to interact with your Wise account on your behalf. Whoever has access to your token can access your account details and history. In the case of a Full access token, they can also send transfers. Once you obtain an API token from us, it is on you to keep it safe.
+Your API tokens should be guarded closely. They represent your identity and authorization and can be used to interact with your Pazemo account on your behalf. Whoever has access to your token can access your account details and history. In the case of a Full access token, they can also send transfers. Once you obtain an API token from us, it is on you to keep it safe.
 
 Below is technical advise and guidance on how to protect your tokens. Not everything may apply to the application you are building and the goal is not to provide a long checklist of things to do. Rather, we attempt to provide generic guidance and best-practices, to send you in the right direction. You will have to do additional research and consider the specific technology and purpose of your application.
 
@@ -229,11 +209,11 @@ If you suspect that your token has leaked, revoke and rotate it. If you accident
 
 Revoke old tokens that you no longer need or use.
 
-During the lifetime of an active token, limit the amount of people and systems who can access it. E-mail inboxes and chat logs are archived and not a secure place to hold tokens. Ideally, your access token would live only in Wise systems and your production system(s) that actually need it. You do not need to hold a backup copy of the token, as you can reveal an existing token from your profile settings page.
+During the lifetime of an active token, limit the amount of people and systems who can access it. E-mail inboxes and chat logs are archived and not a secure place to hold tokens. Ideally, your access token would live only in Pazemo systems and your production system(s) that actually need it. You do not need to hold a backup copy of the token, as you can reveal an existing token from your profile settings page.
 
 ### Encryption
 
-Wise Platform API is using HTTPS with >=TLS 1.2. Non-encrypted HTTP connections are not accepted. Do not connect to our API with unencrypted HTTP, as this will transmit your access token in plaintext over the network.
+Pazemo Platform API is using HTTPS with <code>>=TLS 1.2.</code> Non-encrypted HTTP connections are not accepted. Do not connect to our API with unencrypted HTTP, as this will transmit your access token in plaintext over the network.
 
 > Verifying certificates in client code
 
@@ -241,11 +221,11 @@ Wise Platform API is using HTTPS with >=TLS 1.2. Non-encrypted HTTP connections 
 <?php
 // Secure - this will fail when an invalid HTTPS certificate is returned.
 // Such failure is not normal and most likely means there is something
-// in-between you and Wise, intercepting communications.
+// in-between you and Pazemo, intercepting communications.
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
-curl_setopt($ch, CURLOPT_URL, 'https://api.transferwise.com');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stg.pazemo.com');
 
 
 // Insecure - do not do this. This will not validate certificates and
@@ -254,16 +234,16 @@ curl_setopt($ch, CURLOPT_URL, 'https://api.transferwise.com');
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_URL, 'https://api.transferwise.com');
+curl_setopt($ch, CURLOPT_URL, 'https://api.stg.pazemo.com');
 ```
 
-Validate certificates. You should not proceed with a connection when you receive a certificate validation error from Wise. Make sure all parts of your application are using encryption and HTTPS and failing when certificate validation fails.
+Validate certificates. You should not proceed with a connection when you receive a certificate validation error from Pazemo. Make sure all parts of your application are using encryption and HTTPS and failing when certificate validation fails.
 
 ### Application design
 
-Secure your application against common security flaws (OWASP Top 10). Think how an attacker could leverage Unrestricted File Upload or Insecure Direct Object Reference to read the contents of your server's environment or config files.
+Secure your application against common security flaws (<a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">OWASP Top 10</a>). Think how an attacker could leverage Unrestricted File Upload or Insecure Direct Object Reference to read the contents of your server's environment or config files.
 
-If your application is larger, consider extracting Wise-specific functionality into a separate middleware or service layer. This would enable you to move API tokens there, separate from the main application.
+If your application is larger, consider extracting Pazemo-specific functionality into a separate middleware or service layer. This would enable you to move API tokens there, separate from the main application.
 
 Do not store the token in user-accessible code such as browser-side JavaScript or Android apps that can be decompiled. The token should always live server-side, exposing domain-logic via API-s.
 
@@ -293,9 +273,7 @@ The option for toggling the check yourself will also be available in production 
 
 ### LIVE environments
 
-- The LIVE API is located at https://api.stg.pazemo.com/
-
-Please note Sandbox environment is limited. We do not send any emails from it as well as transfer processing is not simulated. Please consider Simulation endpoints to change transfer state after funding.
+- The LIVE API is located at <a href="https://api.stg.pazemo.com/explorer">https://api.stg.pazemo.com/explorer</a>
 
 ## Get your profile id
 
@@ -324,13 +302,13 @@ curl -X GET http://api.stg.pazemo.com/users/ \
 }
 ```
 
-
 You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making payouts.
 
 It’s recommended to always provide profileId when you’re creating new resources later (Create Quote, Create Recipient Account, Create Transfer). If you omit profileId then resource will by default belong to your personal profile. This might not be your intention, as you most probably want to execute transfers under your business profile.
 
-Request
-GET http://api.stg.pazemo.com/users/
+### Request
+
+<code>GET http://api.stg.pazemo.com/users/</code>
 
 ### Response
 
@@ -394,7 +372,7 @@ Quote fetches current mid-market exchange rate that will be used for your transf
 
 ### Request
 
-POST https://api.stg.pazemo.com/quotes
+<code>POST https://api.stg.pazemo.com/quotes</code>
 
 Field | Description | Format
 --------- | ------- | -----------
@@ -462,7 +440,7 @@ Recipient bank account details are different for different currencies. For examp
 
 ### Request
 
-POST http://api.stg.pazemo.com/users/{userId}/accounts
+<code>POST http://api.stg.pazemo.com/users/{userId}/accounts</code>
 
 Field | Description | Format
 --------- | ------- | -----------
@@ -484,3 +462,128 @@ receiveCurrencyId | Currency Code | Text.
 sendAmount | Send Amount | Decimal.
 receiveAmount | Receive Amount| Decimal.
 status | Status | Text.
+
+### Send money to email recipient
+
+If you don't know your recipient’s bank account details, you can still send money using their email address. You need to set up email recipient and then Pazemo will collect bank details directly from your recipient.
+
+When you set up the transfer, we’ll email your recipient a secure link to collect their bank account details. Once your recipient provides their bank account details to us, we’re able to complete your transfer.
+
+## Create transfer
+
+>Example Request:
+
+```shell
+curl -X 'POST' \
+  'http://api.stg.pazemo.com/transfers' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "senderAccountId": "string",
+  "receiverAccountId": "string",
+  "quoteId": "string",
+  "senderTransactionId": 0,
+  "receiverTransactionId": 0
+}'
+```
+
+> Example Response:
+
+```json
+{
+"id": "string",
+"createdTime": "2019-08-24T14:15:22Z",
+"senderAccountId": "string",
+"receiverAccountId": "string",
+"quoteId": "string",
+"senderTransactionId": 0,
+"receiverTransactionId": 0
+}
+```
+
+There are four steps to execute payouts:
+
+Step 1: Create a quote
+
+Step 2: Create a recipient account
+
+**Step 3: Create a transfer**
+
+Step 4: Fund a transfer
+
+A transfer is a payout order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.
+
+### Request
+
+<code>POST http://api.stg.pazemo.com/transfers</code>
+
+Field | Description | Format
+--------- | ------- | -----------
+senderAccountId | Account ID | Text.
+receiverAccountId | Account ID | Text.
+quoteId | Quote ID | Text.
+senderTransactionId | Transaction | Number.
+receiverTransactionId | Transaction | Number.
+
+There are two options to deal with conditionally required fields:
+
+- Always provide values for these fields
+- Always call transfers-requirements endpoint and submit values only if indicated so
+
+### Response
+
+Field | Description | Format
+--------- | ------- | -----------
+id | Personal profile id | Text.
+createdTime | Creation Date | "yyyy-mm-dd".
+senderAccountId | Account ID | Text.
+receiverAccountId | Account ID | Text.
+quoteId | Quote ID | Text.
+senderTransactionId | Transaction | Number.
+receiverTransactionId | Transaction | Number.
+
+### Avoiding duplicate transfers
+
+We use customerTransactionId field to avoid duplicate transfer requests. When your first call fails (error or timeout) then you should use the same value in customerTransactionId field that you used in the original call when you are submitting a retry message. This way we can treat subsequent retry messages as repeat messages and will not create duplicate transfers to your account.
+
+## Fund transfer
+
+>Example Request:
+
+```shell
+curl -X POST https://api.sandbox.transferPazemo.tech/v3/profiles/{profileId}/transfers/{transferId}/payments \
+     -H "Authorization: Bearer <your api token>" \
+     -H "Content-Type: application/json" \
+     -d '{ 
+          "type": "BALANCE"   
+         }'
+```
+
+>Example Response:
+
+```json
+{
+  "type": "BALANCE",
+  "status": "COMPLETED",
+  "errorCode": null
+}
+```
+
+There are four steps to execute payouts:
+
+Step 1: Create a quote
+
+Step 2: Create a recipient account
+
+Step 3: Create a transfer
+
+**Step 4: Fund a transfer**
+
+This API call is the final step for executing payouts. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an "insufficient funds" error.
+
+Initial developer account has by default plentiful funds available for EUR, USD, GBP, and AUD.
+You can add new currencies to your account via the user interface
+
+You can then top up your new currencies by converting funds from other currencies.
+
+Unless you are sending to a small number of recipients who you trust, it is recommended to implement the referenced measures for your integration.
