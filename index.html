@@ -599,9 +599,10 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <ul>
 <li>IP addresses should use only IPv4 format e.g. 192.168.100.14</li>
 <li>IP ranges should use CIDR notation e.g. 192.168.100.0/24 which would include 192.168.100.0 up to 192.168.100.255</li>
-<li>You can authorize multiple discrete IP-s or IP ranges for one token
-If a request is being made using an IP address that is not in the whitelisted IP addresses, the server will respond with a 401 Unauthorized HTTP status code.</li>
+<li>You can authorize multiple discrete IP-s or IP ranges for one token</li>
 </ul>
+
+<p>If a request is being made using an IP address that is not in the whitelisted IP addresses, the server will respond with a 401 Unauthorized HTTP status code.</p>
 <h3 id='testing'>Testing</h3>
 <p>By default in our sandbox environment strong customer authentication is disabled. You can enable it for your account on the public keys management page.</p>
 
@@ -769,17 +770,56 @@ GET http://api.stg.pazemo.com/users/</p>
 <h3 id='response-2'>Response</h3>
 <p>The payOut field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the payOut field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.</p>
 
-<p>When showing the price of a transfer, always show the total fees of a payment option.
-Field | Description | Format
---------- | ------- | -----------
-id | Personal profile id | Text.
-createdTime | Creation Date | &quot;yyyy-mm-dd&quot;.
-userId | User ID | Text.
-sendCurrencyId | Currency Code | Text.
-receiveCurrencyId | Currency Code | Text.
-sendAmount | Send Amount | Decimal.
-receiveAmount | Receive Amount| Decimal.
-status | Status | Text.</p>
+<p>When showing the price of a transfer, always show the total fees of a payment option.</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Personal profile id</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Creation Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>userId</td>
+<td>User ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>sendCurrencyId</td>
+<td>Currency Code</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>receiveCurrencyId</td>
+<td>Currency Code</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>sendAmount</td>
+<td>Send Amount</td>
+<td>Decimal.</td>
+</tr>
+<tr>
+<td>receiveAmount</td>
+<td>Receive Amount</td>
+<td>Decimal.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
 <h2 id='create-recipient-account'>Create recipient account</h2>
 <blockquote>
 <p>Example Request:</p>
@@ -896,10 +936,8 @@ status | Status | Text.</p>
 </tbody></table>
 <h1 id='errors'>Errors</h1>
 <aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
+The Pazemo API uses the following error codes:
 </aside>
-
-<p>The Kittn API uses the following error codes:</p>
 
 <table><thead>
 <tr>
