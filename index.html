@@ -352,14 +352,34 @@
                   <li>
                     <a href="#create-recipient-account" class="toc-h2 toc-link" data-title="Create recipient account">Create recipient account</a>
                   </li>
+                  <li>
+                    <a href="#create-transfer" class="toc-h2 toc-link" data-title="Create transfer">Create transfer</a>
+                  </li>
+                  <li>
+                    <a href="#fund-transfer" class="toc-h2 toc-link" data-title="Fund transfer">Fund transfer</a>
+                  </li>
               </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-status-codes" class="toc-h2 toc-link" data-title="HTTP Status Codes">HTTP Status Codes</a>
+                  </li>
+                  <li>
+                    <a href="#validation-errors" class="toc-h2 toc-link" data-title="Validation Errors">Validation Errors</a>
+                  </li>
+                  <li>
+                    <a href="#authentication-errors" class="toc-h2 toc-link" data-title="Authentication Errors">Authentication Errors</a>
+                  </li>
+                  <li>
+                    <a href="#system-errors" class="toc-h2 toc-link" data-title="System Errors">System Errors</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://pazemo.com/signup'>Sign Up for a Developer Key</a></li>
+            <li><a href='https://pazemo.com/signup'>Sign Up for a API Key</a></li>
             <li><a href='https://api.stg.pazemo.com/explorer/'>Pazemo API Explorer</a></li>
         </ul>
     </div>
@@ -419,7 +439,7 @@
 </ul></li>
 </ul>
 
-<p>Please contact infi@pazemo.com to get started.</p>
+<p>Please contact info@pazemo.com to get started.</p>
 <h2 id='affiliates'>Affiliates</h2>
 <p>When you apply to the Pazemo affiliates program you can get access to our API to help you build your own valuable content for your customers or readers.</p>
 <h3 id='the-pazemo-platform-api-lets-you-to'>The Pazemo Platform API lets you to:</h3>
@@ -465,39 +485,26 @@ Using the product before integrating with our API will help you understand how o
 
 <ol>
 <li>Choose the best tool for you</li>
-<li>You don’t necessarily need to integrate with the API to make a large number of payouts. We have two ways you can do it:</li>
 </ol>
 
 <ul>
-<li><p>Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Wise, and pay for the batch. No development effort needed.</p></li>
-<li><p>API integration. Completely automate your payment process by sending payment orders via the Wise Platform API.</p></li>
+<li><p>You don’t necessarily need to integrate with the API to make a large number of payouts. We have two ways you can do it:</p></li>
+<li><p>Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Pazemo, and pay for the batch. No development effort needed.</p></li>
+<li><p>API integration. Completely automate your payment process by sending payment orders via the Pazemo Platform API.</p></li>
 </ul>
 <h2 id='api-access'>API access</h2><h3 id='authentication'>Authentication</h3>
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'pazemo'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">pazemo</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
 curl <span class="s2">"api_endpoint_here"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">pazemo</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx"</span>
 </code></pre></div>
 <blockquote>
 <p>Make sure to replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your API key.</p>
 </blockquote>
 
 <p>Sign up for a developer account and get your personal API token for our sandbox. https://pazemo.com/register</p>
-
-<p>NB! Two factor authentication (2FA) code for sandbox login is 111111.</p>
-
-<p>Your developer account will have some test money that you can use to start making payments in same way as you would in a live environment. You can get your API tokens in the Settings tab of your account page.</p>
 
 <p>Add your API token as header parameter to every request like this:</p>
 
@@ -507,7 +514,7 @@ curl <span class="s2">"api_endpoint_here"</span>
 You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your personal API key.
 </aside>
 <h3 id='acquiring-your-api-token'>Acquiring your API token</h3>
-<p>Your API tokens section can be found at the bottom of the Settings page inside your Wise account. By default, you have no active tokens. You can issue new tokens after enabling 2-step login.</p>
+<p>Your API tokens section can be found at the bottom of the Settings page inside your Pazemo account. By default, you have no active tokens. You can issue new tokens after enabling 2-step login.</p>
 
 <p>We support tokens of two permission levels:</p>
 
@@ -516,7 +523,7 @@ You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your persona
 <li>Full access - Create, manage and fund transfers</li>
 </ul>
 <h3 id='keeping-your-api-token-safe'>Keeping your API token safe</h3>
-<p>Your API tokens should be guarded closely. They represent your identity and authorization and can be used to interact with your Wise account on your behalf. Whoever has access to your token can access your account details and history. In the case of a Full access token, they can also send transfers. Once you obtain an API token from us, it is on you to keep it safe.</p>
+<p>Your API tokens should be guarded closely. They represent your identity and authorization and can be used to interact with your Pazemo account on your behalf. Whoever has access to your token can access your account details and history. In the case of a Full access token, they can also send transfers. Once you obtain an API token from us, it is on you to keep it safe.</p>
 
 <p>Below is technical advise and guidance on how to protect your tokens. Not everything may apply to the application you are building and the goal is not to provide a long checklist of things to do. Rather, we attempt to provide generic guidance and best-practices, to send you in the right direction. You will have to do additional research and consider the specific technology and purpose of your application.</p>
 <h3 id='source-code'>Source code</h3>
@@ -553,9 +560,9 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 
 <p>Revoke old tokens that you no longer need or use.</p>
 
-<p>During the lifetime of an active token, limit the amount of people and systems who can access it. E-mail inboxes and chat logs are archived and not a secure place to hold tokens. Ideally, your access token would live only in Wise systems and your production system(s) that actually need it. You do not need to hold a backup copy of the token, as you can reveal an existing token from your profile settings page.</p>
+<p>During the lifetime of an active token, limit the amount of people and systems who can access it. E-mail inboxes and chat logs are archived and not a secure place to hold tokens. Ideally, your access token would live only in Pazemo systems and your production system(s) that actually need it. You do not need to hold a backup copy of the token, as you can reveal an existing token from your profile settings page.</p>
 <h3 id='encryption'>Encryption</h3>
-<p>Wise Platform API is using HTTPS with &gt;=TLS 1.2. Non-encrypted HTTP connections are not accepted. Do not connect to our API with unencrypted HTTP, as this will transmit your access token in plaintext over the network.</p>
+<p>Pazemo Platform API is using HTTPS with <code>&gt;=TLS 1.2.</code> Non-encrypted HTTP connections are not accepted. Do not connect to our API with unencrypted HTTP, as this will transmit your access token in plaintext over the network.</p>
 
 <blockquote>
 <p>Verifying certificates in client code</p>
@@ -563,11 +570,11 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 <span class="c1">// Secure - this will fail when an invalid HTTPS certificate is returned.</span>
 <span class="c1">// Such failure is not normal and most likely means there is something</span>
-<span class="c1">// in-between you and Wise, intercepting communications.</span>
+<span class="c1">// in-between you and Pazemo, intercepting communications.</span>
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYHOST</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.transferwise.com'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.stg.pazemo.com'</span><span class="p">);</span>
 
 
 <span class="c1">// Insecure - do not do this. This will not validate certificates and</span>
@@ -576,13 +583,13 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <span class="nv">$ch</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYHOST</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
 <span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_SSL_VERIFYPEER</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.transferwise.com'</span><span class="p">);</span>
+<span class="nb">curl_setopt</span><span class="p">(</span><span class="nv">$ch</span><span class="p">,</span> <span class="no">CURLOPT_URL</span><span class="p">,</span> <span class="s1">'https://api.stg.pazemo.com'</span><span class="p">);</span>
 </code></pre></div>
-<p>Validate certificates. You should not proceed with a connection when you receive a certificate validation error from Wise. Make sure all parts of your application are using encryption and HTTPS and failing when certificate validation fails.</p>
+<p>Validate certificates. You should not proceed with a connection when you receive a certificate validation error from Pazemo. Make sure all parts of your application are using encryption and HTTPS and failing when certificate validation fails.</p>
 <h3 id='application-design'>Application design</h3>
-<p>Secure your application against common security flaws (OWASP Top 10). Think how an attacker could leverage Unrestricted File Upload or Insecure Direct Object Reference to read the contents of your server&#39;s environment or config files.</p>
+<p>Secure your application against common security flaws (<a href="https://www.owasp.org/index.php/Top_10-2017_Top_10">OWASP Top 10</a>). Think how an attacker could leverage Unrestricted File Upload or Insecure Direct Object Reference to read the contents of your server&#39;s environment or config files.</p>
 
-<p>If your application is larger, consider extracting Wise-specific functionality into a separate middleware or service layer. This would enable you to move API tokens there, separate from the main application.</p>
+<p>If your application is larger, consider extracting Pazemo-specific functionality into a separate middleware or service layer. This would enable you to move API tokens there, separate from the main application.</p>
 
 <p>Do not store the token in user-accessible code such as browser-side JavaScript or Android apps that can be decompiled. The token should always live server-side, exposing domain-logic via API-s.</p>
 
@@ -609,10 +616,8 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>The option for toggling the check yourself will also be available in production as long as it is optional.</p>
 <h3 id='live-environments'>LIVE environments</h3>
 <ul>
-<li>The LIVE API is located at https://api.stg.pazemo.com/</li>
+<li>The LIVE API is located at <a href="https://api.stg.pazemo.com/explorer">https://api.stg.pazemo.com/explorer</a></li>
 </ul>
-
-<p>Please note Sandbox environment is limited. We do not send any emails from it as well as transfer processing is not simulated. Please consider Simulation endpoints to change transfer state after funding.</p>
 <h2 id='get-your-profile-id'>Get your profile id</h2>
 <blockquote>
 <p>Example Request:</p>
@@ -641,9 +646,8 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making payouts.</p>
 
 <p>It’s recommended to always provide profileId when you’re creating new resources later (Create Quote, Create Recipient Account, Create Transfer). If you omit profileId then resource will by default belong to your personal profile. This might not be your intention, as you most probably want to execute transfers under your business profile.</p>
-
-<p>Request
-GET http://api.stg.pazemo.com/users/</p>
+<h3 id='request'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/users/</code></p>
 <h3 id='response'>Response</h3>
 <p>Personal Profile Fields</p>
 
@@ -741,8 +745,8 @@ GET http://api.stg.pazemo.com/users/</p>
 <p>Step 4: Fund a transfer</p>
 
 <p>Quote fetches current mid-market exchange rate that will be used for your transfer. Quote also calculates our fee and estimated delivery time.</p>
-<h3 id='request'>Request</h3>
-<p>POST https://api.stg.pazemo.com/quotes</p>
+<h3 id='request-2'>Request</h3>
+<p><code>POST https://api.stg.pazemo.com/quotes</code></p>
 
 <table><thead>
 <tr>
@@ -857,8 +861,8 @@ GET http://api.stg.pazemo.com/users/</p>
 <p>Recipient is a person or institution who is the ultimate beneficiary of your payment.</p>
 
 <p>Recipient bank account details are different for different currencies. For example, you only need to know the IBAN number to send payments to most European and Nordic countries. But in order to send money to Canada, you’d need to fill out four fields: You recipient’s institution number, transit number, account number, and account type.</p>
-<h3 id='request-2'>Request</h3>
-<p>POST http://api.stg.pazemo.com/users/{userId}/accounts</p>
+<h3 id='request-3'>Request</h3>
+<p><code>POST http://api.stg.pazemo.com/users/{userId}/accounts</code></p>
 
 <table><thead>
 <tr>
@@ -934,10 +938,179 @@ GET http://api.stg.pazemo.com/users/</p>
 <td>Text.</td>
 </tr>
 </tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-The Pazemo API uses the following error codes:
-</aside>
+<h3 id='send-money-to-email-recipient'>Send money to email recipient</h3>
+<p>If you don&#39;t know your recipient’s bank account details, you can still send money using their email address. You need to set up email recipient and then Pazemo will collect bank details directly from your recipient.</p>
+
+<p>When you set up the transfer, we’ll email your recipient a secure link to collect their bank account details. Once your recipient provides their bank account details to us, we’re able to complete your transfer.</p>
+<h2 id='create-transfer'>Create transfer</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
+  <span class="s1">'http://api.stg.pazemo.com/transfers'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+  "senderAccountId": "string",
+  "receiverAccountId": "string",
+  "quoteId": "string",
+  "senderTransactionId": 0,
+  "receiverTransactionId": 0
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+</span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"senderAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"receiverAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"quoteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+</span><span class="nl">"senderTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+</span><span class="nl">"receiverTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>There are four steps to execute payouts:</p>
+
+<p>Step 1: Create a quote</p>
+
+<p>Step 2: Create a recipient account</p>
+
+<p><strong>Step 3: Create a transfer</strong></p>
+
+<p>Step 4: Fund a transfer</p>
+
+<p>A transfer is a payout order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.</p>
+<h3 id='request-4'>Request</h3>
+<p><code>POST http://api.stg.pazemo.com/transfers</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>senderAccountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>receiverAccountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>quoteId</td>
+<td>Quote ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>senderTransactionId</td>
+<td>Transaction</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>receiverTransactionId</td>
+<td>Transaction</td>
+<td>Number.</td>
+</tr>
+</tbody></table>
+
+<p>There are two options to deal with conditionally required fields:</p>
+
+<ul>
+<li>Always provide values for these fields</li>
+<li>Always call transfers-requirements endpoint and submit values only if indicated so</li>
+</ul>
+<h3 id='response-4'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Personal profile id</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Creation Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>senderAccountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>receiverAccountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>quoteId</td>
+<td>Quote ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>senderTransactionId</td>
+<td>Transaction</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>receiverTransactionId</td>
+<td>Transaction</td>
+<td>Number.</td>
+</tr>
+</tbody></table>
+<h3 id='avoiding-duplicate-transfers'>Avoiding duplicate transfers</h3>
+<p>We use customerTransactionId field to avoid duplicate transfer requests. When your first call fails (error or timeout) then you should use the same value in customerTransactionId field that you used in the original call when you are submitting a retry message. This way we can treat subsequent retry messages as repeat messages and will not create duplicate transfers to your account.</p>
+<h2 id='fund-transfer'>Fund transfer</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.sandbox.transferPazemo.tech/v3/profiles/<span class="o">{</span>profileId<span class="o">}</span>/transfers/<span class="o">{</span>transferId<span class="o">}</span>/payments <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+     <span class="nt">-d</span> <span class="s1">'{ 
+          "type": "BALANCE"   
+         }'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>There are four steps to execute payouts:</p>
+
+<p>Step 1: Create a quote</p>
+
+<p>Step 2: Create a recipient account</p>
+
+<p>Step 3: Create a transfer</p>
+
+<p><strong>Step 4: Fund a transfer</strong></p>
+
+<p>This API call is the final step for executing payouts. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an &quot;insufficient funds&quot; error.</p>
+
+<p>Initial developer account has by default plentiful funds available for EUR, USD, GBP, and AUD.
+You can add new currencies to your account via the user interface</p>
+
+<p>You can then top up your new currencies by converting funds from other currencies.</p>
+
+<p>Unless you are sending to a small number of recipients who you trust, it is recommended to implement the referenced measures for your integration.</p>
+<h1 id='errors'>Errors</h1><h2 id='http-status-codes'>HTTP Status Codes</h2>
+<p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
 
 <table><thead>
 <tr>
@@ -955,15 +1128,15 @@ The Pazemo API uses the following error codes:
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
+<td>Forbidden -- The data requested is hidden for administrators only.</td>
 </tr>
 <tr>
 <td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
+<td>Not Found -- The specified data could not be found.</td>
 </tr>
 <tr>
 <td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
+<td>Method Not Allowed -- You tried to access a data with an invalid method.</td>
 </tr>
 <tr>
 <td>406</td>
@@ -971,7 +1144,7 @@ The Pazemo API uses the following error codes:
 </tr>
 <tr>
 <td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
+<td>Gone -- The data requested has been removed from our servers.</td>
 </tr>
 <tr>
 <td>418</td>
@@ -979,7 +1152,7 @@ The Pazemo API uses the following error codes:
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
+<td>Too Many Requests -- You&#39;re requesting too many datas! Slow down!</td>
 </tr>
 <tr>
 <td>500</td>
@@ -990,6 +1163,47 @@ The Pazemo API uses the following error codes:
 <td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
+<h2 id='validation-errors'>Validation Errors</h2>
+<blockquote>
+<p>Example Validation Error:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error.route.not.supported"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This route is not supported"</span><span class="p">,</span><span class="w">
+            </span><span class="nl">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="s2">"CNY-EUR"</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Data validation or violation of business rules related errors. Response could contain multiple errors.</p>
+<h2 id='authentication-errors'>Authentication Errors</h2>
+<blockquote>
+<p>Example Authentication Error:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unauthorized"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full authentication is required to access this resource"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Security related errors.</p>
+<h2 id='system-errors'>System Errors</h2>
+<blockquote>
+<p>Example System Error:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-02T13:07:39.644+0000"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal Server Error"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"exception"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang.NullPointerException"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No message available"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v1/quotes/0b63b0cb-2041-4bc4-b3fc-1e51a1454a1b/account-requirements"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Something went wrong in our side.</p>
 
       </div>
       <div class="dark-box">
