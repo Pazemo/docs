@@ -78,6 +78,7 @@ Please contact infi@pazemo.com to get started.
 When you apply to the Pazemo affiliates program you can get access to our API to help you build your own valuable content for your customers or readers.
 
 ### The Pazemo Platform API lets you to:
+
 - Get the real-time mid-market exchange rates for any currency route.
 - Get up to 30 days of historical mid-market exchange rates for any currency route.
 - Get a Pazemo quote for any supported currency route, which includes our fees and estimated delivery time.
@@ -281,6 +282,7 @@ Please note:
 - IP addresses should use only IPv4 format e.g. 192.168.100.14
 - IP ranges should use CIDR notation e.g. 192.168.100.0/24 which would include 192.168.100.0 up to 192.168.100.255
 - You can authorize multiple discrete IP-s or IP ranges for one token
+
 If a request is being made using an IP address that is not in the whitelisted IP addresses, the server will respond with a 401 Unauthorized HTTP status code.
 
 ### Testing
@@ -321,6 +323,7 @@ curl -X GET http://api.stg.pazemo.com/users/ \
   "configs": {}
 }
 ```
+
 
 You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making payouts.
 
@@ -390,6 +393,7 @@ Step 4: Fund a transfer
 Quote fetches current mid-market exchange rate that will be used for your transfer. Quote also calculates our fee and estimated delivery time.
 
 ### Request
+
 POST https://api.stg.pazemo.com/quotes
 
 Field | Description | Format
@@ -399,9 +403,11 @@ receiveCurrencyId | Currency Code | Text.
 sendAmount | Send Amount | Decimal.
 
 ### Response
+
 The payOut field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the payOut field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.
 
 When showing the price of a transfer, always show the total fees of a payment option.
+
 Field | Description | Format
 --------- | ------- | -----------
 id | Personal profile id | Text.
