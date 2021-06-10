@@ -22,7 +22,7 @@ Error Code | Meaning
 
 >Example Validation Error:
 
-``json
+```json
 {
     "errors": [
         {
