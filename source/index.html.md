@@ -45,7 +45,7 @@ You can:
 
 - Power your cross-border and domestic payouts with a single API integration.
 - Pay out directly to bank accounts or email recipients.
-- Monitor payments received to your Pazemo local bank details (AUD, EUR, GBP, NZD, USD, PLN).
+- Monitor payments received to your Pazemo local bank details (IDR, USD, SGD, MYR, EUR).
 - Get statements for balance reconciliation and accounting purposes.
 - Fully automate transfer creation and track statuses.
 - Always get the mid-market exchange and our low cost transparent fees.
@@ -84,7 +84,7 @@ When you apply to the Pazemo affiliates program you can get access to our API to
 - Get a Pazemo quote for any supported currency route, which includes our fees and estimated delivery time.
 
 ## Receive Money
-You can receive money to the local bank details that come with your Pazemo account (USD, EUR, GBP, AUD, NZD and PLN) and reconcile these incoming payments via the API.
+You can receive money to the local bank details that come with your Pazemo account (IDR, USD, SGD, MYR, EUR) and reconcile these incoming payments via the API.
 
 You’re also able to create a webhook subscription to receive event callbacks to your server when payments are received. Here’s more information about the webhooks.
 
@@ -463,12 +463,6 @@ sendAmount | Send Amount | Decimal.
 receiveAmount | Receive Amount| Decimal.
 status | Status | Text.
 
-### Send money to email recipient
-
-If you don't know your recipient’s bank account details, you can still send money using their email address. You need to set up email recipient and then Pazemo will collect bank details directly from your recipient.
-
-When you set up the transfer, we’ll email your recipient a secure link to collect their bank account details. Once your recipient provides their bank account details to us, we’re able to complete your transfer.
-
 ## Create transfer
 
 >Example Request:
@@ -581,7 +575,7 @@ Step 3: Create a transfer
 
 This API call is the final step for executing payouts. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an "insufficient funds" error.
 
-Initial developer account has by default plentiful funds available for EUR, USD, GBP, and AUD.
+Initial developer account has by default plentiful funds available for IDR, USD, SGD, MYR and EUR.
 You can add new currencies to your account via the user interface
 
 You can then top up your new currencies by converting funds from other currencies.
