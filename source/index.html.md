@@ -12,6 +12,7 @@ toc_footers:
   - <a href='https://api.stg.pazemo.com/explorer/'>Pazemo API Explorer</a>
 
 includes:
+  - users
   - errors
 
 search: true
