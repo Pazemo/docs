@@ -361,6 +361,17 @@
               </ul>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1105,6 +1116,133 @@ You can add new currencies to your account via the user interface</p>
 <p>You can then top up your new currencies by converting funds from other currencies.</p>
 
 <p>Unless you are sending to a small number of recipients who you trust, it is recommended to implement the referenced measures for your integration.</p>
+<h1 id='users'>Users</h1><h2 id='get-by-id'>Get by ID</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/{userid}"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"partnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"configs"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get authenticated user details by user id. Response includes also personal user profile info.</p>
+<h3 id='request'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/users/{userid}</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>User ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Created Date</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Updated Date</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>User email</td>
+<td>email</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>User mobile</td>
+<td>string</td>
+</tr>
+<tr>
+<td>name</td>
+<td>User name</td>
+<td>string</td>
+</tr>
+<tr>
+<td>partnerId</td>
+<td>Parter ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>roles</td>
+<td>User Role</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get authenticated user details for the user&#39;s token submitted in the Authorization header. Response includes also personal user profile info.</p>
+<h3 id='request-2'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/users/me</code></p>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>User ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>User email</td>
+<td>email</td>
+</tr>
+<tr>
+<td>name</td>
+<td>User name</td>
+<td>string</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1><h2 id='http-status-codes'>HTTP Status Codes</h2>
 <p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
 
