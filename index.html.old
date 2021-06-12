@@ -1,423 +1,10 @@
-
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
-
-    <style media="screen">
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight .gh {
-  color: #999999;
-}
-.highlight .sr {
-  color: #f6aa11;
-}
-.highlight .go {
-  color: #888888;
-}
-.highlight .gp {
-  color: #555555;
-}
-.highlight .gs {
-}
-.highlight .gu {
-  color: #aaaaaa;
-}
-.highlight .nb {
-  color: #f6aa11;
-}
-.highlight .cm {
-  color: #75715e;
-}
-.highlight .cp {
-  color: #75715e;
-}
-.highlight .c1 {
-  color: #75715e;
-}
-.highlight .cs {
-  color: #75715e;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
-  color: #75715e;
-}
-.highlight .err {
-  color: #960050;
-}
-.highlight .gr {
-  color: #960050;
-}
-.highlight .gt {
-  color: #960050;
-}
-.highlight .gd {
-  color: #49483e;
-}
-.highlight .gi {
-  color: #49483e;
-}
-.highlight .ge {
-  color: #49483e;
-}
-.highlight .kc {
-  color: #66d9ef;
-}
-.highlight .kd {
-  color: #66d9ef;
-}
-.highlight .kr {
-  color: #66d9ef;
-}
-.highlight .no {
-  color: #66d9ef;
-}
-.highlight .kt {
-  color: #66d9ef;
-}
-.highlight .mf {
-  color: #ae81ff;
-}
-.highlight .mh {
-  color: #ae81ff;
-}
-.highlight .il {
-  color: #ae81ff;
-}
-.highlight .mi {
-  color: #ae81ff;
-}
-.highlight .mo {
-  color: #ae81ff;
-}
-.highlight .m, .highlight .mb, .highlight .mx {
-  color: #ae81ff;
-}
-.highlight .sc {
-  color: #ae81ff;
-}
-.highlight .se {
-  color: #ae81ff;
-}
-.highlight .ss {
-  color: #ae81ff;
-}
-.highlight .sd {
-  color: #e6db74;
-}
-.highlight .s2 {
-  color: #e6db74;
-}
-.highlight .sb {
-  color: #e6db74;
-}
-.highlight .sh {
-  color: #e6db74;
-}
-.highlight .si {
-  color: #e6db74;
-}
-.highlight .sx {
-  color: #e6db74;
-}
-.highlight .s1 {
-  color: #e6db74;
-}
-.highlight .s, .highlight .sa, .highlight .dl {
-  color: #e6db74;
-}
-.highlight .na {
-  color: #a6e22e;
-}
-.highlight .nc {
-  color: #a6e22e;
-}
-.highlight .nd {
-  color: #a6e22e;
-}
-.highlight .ne {
-  color: #a6e22e;
-}
-.highlight .nf, .highlight .fm {
-  color: #a6e22e;
-}
-.highlight .vc {
-  color: #ffffff;
-}
-.highlight .nn {
-  color: #ffffff;
-}
-.highlight .ni {
-  color: #ffffff;
-}
-.highlight .bp {
-  color: #ffffff;
-}
-.highlight .vg {
-  color: #ffffff;
-}
-.highlight .vi {
-  color: #ffffff;
-}
-.highlight .nv, .highlight .vm {
-  color: #ffffff;
-}
-.highlight .w {
-  color: #ffffff;
-}
-.highlight {
-  color: #ffffff;
-}
-.highlight .n, .highlight .py, .highlight .nx {
-  color: #ffffff;
-}
-.highlight .nl {
-  color: #f92672;
-}
-.highlight .ow {
-  color: #f92672;
-}
-.highlight .nt {
-  color: #f92672;
-}
-.highlight .k, .highlight .kv {
-  color: #f92672;
-}
-.highlight .kn {
-  color: #f92672;
-}
-.highlight .kp {
-  color: #f92672;
-}
-.highlight .o {
-  color: #f92672;
-}
-    </style>
-    <style media="print">
-      * {
-        -webkit-transition:none!important;
-        transition:none!important;
-      }
-      .highlight table td { padding: 5px; }
-.highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #586e75;
-}
-.highlight .err {
-  color: #002b36;
-  background-color: #dc322f;
-}
-.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
-  color: #657b83;
-}
-.highlight .cp {
-  color: #b58900;
-}
-.highlight .nt {
-  color: #b58900;
-}
-.highlight .o, .highlight .ow {
-  color: #93a1a1;
-}
-.highlight .p, .highlight .pi {
-  color: #93a1a1;
-}
-.highlight .gi {
-  color: #859900;
-}
-.highlight .gd {
-  color: #dc322f;
-}
-.highlight .gh {
-  color: #268bd2;
-  background-color: #002b36;
-  font-weight: bold;
-}
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #6c71c4;
-}
-.highlight .kc {
-  color: #cb4b16;
-}
-.highlight .kt {
-  color: #cb4b16;
-}
-.highlight .kd {
-  color: #cb4b16;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #859900;
-}
-.highlight .sa {
-  color: #6c71c4;
-}
-.highlight .sr {
-  color: #2aa198;
-}
-.highlight .si {
-  color: #d33682;
-}
-.highlight .se {
-  color: #d33682;
-}
-.highlight .nn {
-  color: #b58900;
-}
-.highlight .nc {
-  color: #b58900;
-}
-.highlight .no {
-  color: #b58900;
-}
-.highlight .na {
-  color: #268bd2;
-}
-.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
-  color: #859900;
-}
-.highlight .ss {
-  color: #859900;
-}
-    </style>
-    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-a9fde460.js"></script>
-
-    <script>
-      $(function() { setupCodeCopy(); });
-    </script>
-  </head>
-
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
-    <a href="#" id="nav-button">
-      <span>
-        NAV
-        <img src="images/navbar-cad8cdcb.png" alt="" />
-      </span>
-    </a>
-    <div class="toc-wrapper">
-      <img src="images/logo-1c5bf4a2.png" class="logo" alt="" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <ul id="toc" class="toc-list-h1">
-          <li>
-            <a href="#pazemo-platform-api" class="toc-h1 toc-link" data-title="Pazemo Platform API">Pazemo Platform API</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#withdraws-and-account-automation" class="toc-h2 toc-link" data-title="withdraws and Account Automation">withdraws and Account Automation</a>
-                  </li>
-                  <li>
-                    <a href="#banks" class="toc-h2 toc-link" data-title="Banks">Banks</a>
-                  </li>
-                  <li>
-                    <a href="#affiliates" class="toc-h2 toc-link" data-title="Affiliates">Affiliates</a>
-                  </li>
-                  <li>
-                    <a href="#receive-money" class="toc-h2 toc-link" data-title="Receive Money">Receive Money</a>
-                  </li>
-                  <li>
-                    <a href="#checkout-flows" class="toc-h2 toc-link" data-title="Checkout flows">Checkout flows</a>
-                  </li>
-                  <li>
-                    <a href="#open-banking" class="toc-h2 toc-link" data-title="Open Banking">Open Banking</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#withdraws-guide" class="toc-h1 toc-link" data-title="withdraws Guide">withdraws Guide</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#getting-started" class="toc-h2 toc-link" data-title="Getting started">Getting started</a>
-                  </li>
-                  <li>
-                    <a href="#api-access" class="toc-h2 toc-link" data-title="API access">API access</a>
-                  </li>
-                  <li>
-                    <a href="#get-your-profile-id" class="toc-h2 toc-link" data-title="Get your profile id">Get your profile id</a>
-                  </li>
-                  <li>
-                    <a href="#create-quote" class="toc-h2 toc-link" data-title="Create quote">Create quote</a>
-                  </li>
-                  <li>
-                    <a href="#create-recipient-account" class="toc-h2 toc-link" data-title="Create recipient account">Create recipient account</a>
-                  </li>
-                  <li>
-                    <a href="#create-transfer" class="toc-h2 toc-link" data-title="Create transfer">Create transfer</a>
-                  </li>
-                  <li>
-                    <a href="#fund-transfer" class="toc-h2 toc-link" data-title="Fund transfer">Fund transfer</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
-                  </li>
-                  <li>
-                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#pings" class="toc-h1 toc-link" data-title="Pings">Pings</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#check" class="toc-h2 toc-link" data-title="Check">Check</a>
-                  </li>
-                  <li>
-                    <a href="#ping" class="toc-h2 toc-link" data-title="Ping">Ping</a>
-                  </li>
-                  <li>
-                    <a href="#ping-queue" class="toc-h2 toc-link" data-title="Ping Queue">Ping Queue</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#http-status-codes" class="toc-h2 toc-link" data-title="HTTP Status Codes">HTTP Status Codes</a>
-                  </li>
-                  <li>
-                    <a href="#validation-errors" class="toc-h2 toc-link" data-title="Validation Errors">Validation Errors</a>
-                  </li>
-                  <li>
-                    <a href="#authentication-errors" class="toc-h2 toc-link" data-title="Authentication Errors">Authentication Errors</a>
-                  </li>
-                  <li>
-                    <a href="#system-errors" class="toc-h2 toc-link" data-title="System Errors">System Errors</a>
-                  </li>
-              </ul>
-          </li>
-      </ul>
-        <ul class="toc-footer">
-            <li><a href='https://pazemo.com/signup'>Sign Up for a API Key</a></li>
-            <li><a href='http://docs.stg.pazemo.com/'>Pazemo API Explorer</a></li>
-        </ul>
-    </div>
-    <div class="page-wrapper">
-      <div class="dark-box"></div>
-      <div class="content">
-        <h1 id='pazemo-platform-api'>Pazemo Platform API</h1>
+<h1 id='pazemo-platform-api'>Pazemo Platform API</h1>
 <p>Welcome to the Pazemo Platform API documentation, You can explore the different ways to use our API and choose the right one for you below.</p>
 
 <p>Pazemo API is organized around REST. We use built-in HTTP features and HTTP verbs and we return all responses in JSON.</p>
 
 <ul>
-<li>withdraws and Account Automation</li>
+<li>Payouts and Account Automation</li>
 <li>Banks</li>
 <li>Affiliates</li>
 <li>Receive Money</li>
@@ -428,13 +15,13 @@
 <p>Base URL Open API:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight plaintext"><code>https://api.stg.pazemo.com/
-</code></pre></div><h2 id='withdraws-and-account-automation'>withdraws and Account Automation</h2>
+</code></pre></div><h2 id='payouts-and-account-automation'>Payouts and Account Automation</h2>
 <p>This lets you to automate how you use your Pazemo account. You can automate payments, connect your business tools, and create ways to manage your finances.</p>
 
 <p>You can:</p>
 
 <ul>
-<li>Power your cross-border and domestic withdraws with a single API integration.</li>
+<li>Power your cross-border and domestic payouts with a single API integration.</li>
 <li>Pay out directly to bank accounts or email recipients.</li>
 <li>Monitor payments received to your Pazemo local bank details (IDR, USD, SGD, MYR, EUR).</li>
 <li>Get statements for balance reconciliation and accounting purposes.</li>
@@ -482,11 +69,11 @@
 
 <p>To reconcile incoming payments you might also need to match the information received via webhooks with the information that can be obtained from the statements.</p>
 <h2 id='checkout-flows'>Checkout flows</h2>
-<p>We currently don’t offer the option to build Pazemo into your checkout flow as a payment option to receive money. Note though that Pazemo can be added as a withdraw option on your site for beneficiaries to choose to receive their withdraw through to an email address, directly to a bank account or any other mechanism we support in our standard product.</p>
+<p>We currently don’t offer the option to build Pazemo into your checkout flow as a payment option to receive money. Note though that Pazemo can be added as a payout option on your site for beneficiaries to choose to receive their payout through to an email address, directly to a bank account or any other mechanism we support in our standard product.</p>
 <h2 id='open-banking'>Open Banking</h2>
 <p>Under the Second Payment Services Directive (PDS2) we are opening up the standardized version of our API to the rest of the world. Find out more about our Open Banking API</p>
-<h1 id='withdraws-guide'>withdraws Guide</h1>
-<p>Welcome to the Pazemo withdraws API documentation. Before you start coding, please take few moments to review some important information about Pazemo and our API.</p>
+<h1 id='payouts-guide'>Payouts Guide</h1>
+<p>Welcome to the Pazemo payouts API documentation. Before you start coding, please take few moments to review some important information about Pazemo and our API.</p>
 <h2 id='getting-started'>Getting started</h2>
 <ol>
 <li>Learn about Pazemo.
@@ -513,7 +100,7 @@ Using the product before integrating with our API will help you understand how o
 </ol>
 
 <ul>
-<li><p>You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:</p></li>
+<li><p>You don’t necessarily need to integrate with the API to make a large number of payouts. We have two ways you can do it:</p></li>
 <li><p>Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Pazemo, and pay for the batch. No development effort needed.</p></li>
 <li><p>API integration. Completely automate your payment process by sending payment orders via the Pazemo Platform API.</p></li>
 </ul>
@@ -668,7 +255,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
   </span><span class="nl">"configs"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making withdraws.</p>
+<p>You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making payouts.</p>
 
 <p>It’s recommended to always provide profileId when you’re creating new resources later (Create Quote, Create Recipient Account, Create Transfer). If you omit profileId then resource will by default belong to your personal profile. This might not be your intention, as you most probably want to execute transfers under your business profile.</p>
 <h3 id='request'>Request</h3>
@@ -759,7 +346,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
   </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>There are four steps to execute withdraws:</p>
+<p>There are four steps to execute payouts:</p>
 
 <p><strong>Step 1: Create a quote</strong></p>
 
@@ -797,7 +384,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 </tbody></table>
 <h3 id='response-2'>Response</h3>
-<p>The withdraw field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the withdraw field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.</p>
+<p>The payOut field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the payOut field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.</p>
 
 <p>When showing the price of a transfer, always show the total fees of a payment option.</p>
 
@@ -873,7 +460,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>There are four steps to execute withdraws:</p>
+<p>There are four steps to execute payouts:</p>
 
 <p>Step 1: Create a quote</p>
 
@@ -992,7 +579,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </span><span class="nl">"receiverTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>There are four steps to execute withdraws:</p>
+<p>There are four steps to execute payouts:</p>
 
 <p>Step 1: Create a quote</p>
 
@@ -1002,7 +589,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 
 <p>Step 4: Fund a transfer</p>
 
-<p>A transfer is a withdraw order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.</p>
+<p>A transfer is a payout order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.</p>
 <h3 id='request-4'>Request</h3>
 <p><code>POST http://api.stg.pazemo.com/transfers</code></p>
 
@@ -1096,7 +683,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST http://api.stg.pazemo.com/accounts/<span class="o">{</span>accountId<span class="o">}</span>/transactions/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.sandbox.transferPazemo.tech/v3/profiles/<span class="o">{</span>profileId<span class="o">}</span>/transfers/<span class="o">{</span>transferId<span class="o">}</span>/payments <span class="se">\</span>
      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
      <span class="nt">-d</span> <span class="s1">'{ 
@@ -1112,7 +699,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
   </span><span class="nl">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>There are four steps to execute withdraws:</p>
+<p>There are four steps to execute payouts:</p>
 
 <p>Step 1: Create a quote</p>
 
@@ -1122,7 +709,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 
 <p><strong>Step 4: Fund a transfer</strong></p>
 
-<p>This API call is the final step for executing withdraws. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an &quot;insufficient funds&quot; error.</p>
+<p>This API call is the final step for executing payouts. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an &quot;insufficient funds&quot; error.</p>
 
 <p>Initial developer account has by default plentiful funds available for IDR, USD, SGD, MYR and EUR.
 You can add new currencies to your account via the user interface</p>
@@ -1130,359 +717,3 @@ You can add new currencies to your account via the user interface</p>
 <p>You can then top up your new currencies by converting funds from other currencies.</p>
 
 <p>Unless you are sending to a small number of recipients who you trust, it is recommended to implement the referenced measures for your integration.</p>
-<h1 id='users'>Users</h1><h2 id='get-by-id'>Get by ID</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/{userid}"</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"configs"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get authenticated user details by user id. Response includes also personal user profile info.</p>
-<h3 id='request'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/users/{userid}</code></p>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>User ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>createdTime</td>
-<td>Created Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>updatedTime</td>
-<td>Updated Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Status</td>
-<td>string</td>
-</tr>
-<tr>
-<td>email</td>
-<td>User email</td>
-<td>email</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>User mobile</td>
-<td>string</td>
-</tr>
-<tr>
-<td>name</td>
-<td>User name</td>
-<td>string</td>
-</tr>
-<tr>
-<td>partnerId</td>
-<td>Parter ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>roles</td>
-<td>User Role</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get authenticated user details for the user&#39;s token submitted in the Authorization header. Response includes also personal user profile info.</p>
-<h3 id='request-2'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/users/me</code></p>
-<h3 id='response-2'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>User ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>email</td>
-<td>User email</td>
-<td>email</td>
-</tr>
-<tr>
-<td>name</td>
-<td>User name</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h1 id='pings'>Pings</h1><h2 id='check'>Check</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/check"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Content-Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Check server</p>
-<h3 id='request'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/check</code></p>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>greeting</td>
-<td>Greeting</td>
-<td>string</td>
-</tr>
-<tr>
-<td>date</td>
-<td>Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>url</td>
-<td>URL</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>Content-Type</td>
-<td>Content Type</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id='ping'>Ping</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/ping"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> 
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">Return</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">PingController.ping</span><span class="w">
-</span></code></pre></div>
-<p>Ping the server and retrieve the server version.</p>
-<h3 id='request-2'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/ping</code></p>
-<h3 id='response-2'>Response</h3>
-<p>Return value of PingController.ping</p>
-<h2 id='ping-queue'>Ping Queue</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/pingQueue"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Content-Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get Ping Queue</p>
-<h3 id='request-3'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/pingQueue</code></p>
-<h3 id='response-3'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>greeting</td>
-<td>Greeting</td>
-<td>string</td>
-</tr>
-<tr>
-<td>date</td>
-<td>Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>url</td>
-<td>URL</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>Content-Type</td>
-<td>Content Type</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1><h2 id='http-status-codes'>HTTP Status Codes</h2>
-<p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The data requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified data could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a data with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The data requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many datas! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
-<h2 id='validation-errors'>Validation Errors</h2>
-<blockquote>
-<p>Example Validation Error:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="nl">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error.route.not.supported"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This route is not supported"</span><span class="p">,</span><span class="w">
-            </span><span class="nl">"arguments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-                </span><span class="s2">"CNY-EUR"</span><span class="w">
-            </span><span class="p">]</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Data validation or violation of business rules related errors. Response could contain multiple errors.</p>
-<h2 id='authentication-errors'>Authentication Errors</h2>
-<blockquote>
-<p>Example Authentication Error:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unauthorized"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"error_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Full authentication is required to access this resource"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Security related errors.</p>
-<h2 id='system-errors'>System Errors</h2>
-<blockquote>
-<p>Example System Error:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-02-02T13:07:39.644+0000"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Internal Server Error"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"exception"</span><span class="p">:</span><span class="w"> </span><span class="s2">"java.lang.NullPointerException"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No message available"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/v1/quotes/0b63b0cb-2041-4bc4-b3fc-1e51a1454a1b/account-requirements"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Something went wrong in our side.</p>
-
-      </div>
-      <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
-      </div>
-    </div>
-  </body>
-</html>
