@@ -9,11 +9,10 @@ language_tabs: # must be one of https://git.io/vQNgJ
 
 toc_footers:
   - <a href='https://pazemo.com/signup'>Sign Up for a API Key</a>
-  - <a href='http://docs.stg.pazemo.com/'>Pazemo API Explorer</a>
+  - <a href='https://api.stg.pazemo.com/explorer/'>Pazemo API Explorer</a>
 
 includes:
   - users
-  - ping
   - errors
 
 search: true
@@ -27,7 +26,7 @@ Welcome to the Pazemo Platform API documentation, You can explore the different 
 
 Pazemo API is organized around REST. We use built-in HTTP features and HTTP verbs and we return all responses in JSON.
 
-- withdraws and Account Automation
+- Payouts and Account Automation
 - Banks
 - Affiliates
 - Receive Money
@@ -39,13 +38,13 @@ Pazemo API is organized around REST. We use built-in HTTP features and HTTP verb
 https://api.stg.pazemo.com/
 ```
 
-## withdraws and Account Automation
+## Payouts and Account Automation
 
 This lets you to automate how you use your Pazemo account. You can automate payments, connect your business tools, and create ways to manage your finances.
 
 You can:
 
-- Power your cross-border and domestic withdraws with a single API integration.
+- Power your cross-border and domestic payouts with a single API integration.
 - Pay out directly to bank accounts or email recipients.
 - Monitor payments received to your Pazemo local bank details (IDR, USD, SGD, MYR, EUR).
 - Get statements for balance reconciliation and accounting purposes.
@@ -96,15 +95,15 @@ To reconcile incoming payments you might also need to match the information rece
 
 ## Checkout flows
 
-We currently don’t offer the option to build Pazemo into your checkout flow as a payment option to receive money. Note though that Pazemo can be added as a withdraw option on your site for beneficiaries to choose to receive their withdraw through to an email address, directly to a bank account or any other mechanism we support in our standard product.
+We currently don’t offer the option to build Pazemo into your checkout flow as a payment option to receive money. Note though that Pazemo can be added as a payout option on your site for beneficiaries to choose to receive their payout through to an email address, directly to a bank account or any other mechanism we support in our standard product.
 
 ## Open Banking
 
 Under the Second Payment Services Directive (PDS2) we are opening up the standardized version of our API to the rest of the world. Find out more about our Open Banking API
 
-# withdraws Guide
+# Payouts Guide
 
-Welcome to the Pazemo withdraws API documentation. Before you start coding, please take few moments to review some important information about Pazemo and our API.
+Welcome to the Pazemo payouts API documentation. Before you start coding, please take few moments to review some important information about Pazemo and our API.
 
 ## Getting started
 
@@ -128,7 +127,7 @@ Using the product before integrating with our API will help you understand how o
 
 3. Choose the best tool for you
 
-- You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:
+- You don’t necessarily need to integrate with the API to make a large number of payouts. We have two ways you can do it:
 
 - Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Pazemo, and pay for the batch. No development effort needed.
 
@@ -304,7 +303,7 @@ curl -X GET http://api.stg.pazemo.com/users/ \
 }
 ```
 
-You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making withdraws.
+You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making payouts.
 
 It’s recommended to always provide profileId when you’re creating new resources later (Create Quote, Create Recipient Account, Create Transfer). If you omit profileId then resource will by default belong to your personal profile. This might not be your intention, as you most probably want to execute transfers under your business profile.
 
@@ -360,7 +359,7 @@ curl -X 'POST' \
   "rate": 0
 }
 ```
-There are four steps to execute withdraws:
+There are four steps to execute payouts:
 
 **Step 1: Create a quote**
 
@@ -384,7 +383,7 @@ sendAmount | Send Amount | Decimal.
 
 ### Response
 
-The withdraw field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the withdraw field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.
+The payOut field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the payOut field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.
 
 When showing the price of a transfer, always show the total fees of a payment option.
 
@@ -426,7 +425,7 @@ curl -X 'POST' \
 }
 ```
 
-There are four steps to execute withdraws:
+There are four steps to execute payouts:
 
 Step 1: Create a quote
 
@@ -497,7 +496,7 @@ curl -X 'POST' \
 }
 ```
 
-There are four steps to execute withdraws:
+There are four steps to execute payouts:
 
 Step 1: Create a quote
 
@@ -507,7 +506,7 @@ Step 2: Create a recipient account
 
 Step 4: Fund a transfer
 
-A transfer is a withdraw order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.
+A transfer is a payout order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.
 
 ### Request
 
@@ -547,7 +546,7 @@ We use customerTransactionId field to avoid duplicate transfer requests. When yo
 >Example Request:
 
 ```shell
-curl -X POST http://api.stg.pazemo.com/accounts/{accountId}/transactions/{id} \
+curl -X POST https://api.sandbox.transferPazemo.tech/v3/profiles/{profileId}/transfers/{transferId}/payments \
      -H "Authorization: Bearer <your api token>" \
      -H "Content-Type: application/json" \
      -d '{ 
@@ -565,7 +564,7 @@ curl -X POST http://api.stg.pazemo.com/accounts/{accountId}/transactions/{id} \
 }
 ```
 
-There are four steps to execute withdraws:
+There are four steps to execute payouts:
 
 Step 1: Create a quote
 
@@ -575,7 +574,7 @@ Step 3: Create a transfer
 
 **Step 4: Fund a transfer**
 
-This API call is the final step for executing withdraws. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an "insufficient funds" error.
+This API call is the final step for executing payouts. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an "insufficient funds" error.
 
 Initial developer account has by default plentiful funds available for IDR, USD, SGD, MYR and EUR.
 You can add new currencies to your account via the user interface
