@@ -1,11 +1,14 @@
 # Getting started
 
-1. Learn about Pazemo.
+## Learn about Pazemo.
+
 Pazemo and its multi-currency account features and pricing are best explained below.
 
 https://pazemo.com/pricing
 
-2. Sign up for your Pazemo account, activate your account, and complete verification.
+## Sign Up
+
+Sign up for your Pazemo account, activate your account, and complete verification.
 Using the product before integrating with our API will help you understand how our payment flow works. Just follow these four steps
 
 - Sign up for your Pazemo account https://pazemo.com/signup.
@@ -18,7 +21,7 @@ Using the product before integrating with our API will help you understand how o
 
 - Please note that our Fixed Rate functionality is intended to provide time for customers to send funds to Pazemo, while holding the rate for them. Pazemo is not a trading platform and the Fixed Rate functionality is automatically disabled if abusive behaviour (such as multiple transfer creation and selective completion) is detected.
 
-3. Choose the best tool for you
+## Choose the best tool for you
 
 - You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:
 
