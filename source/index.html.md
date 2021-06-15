@@ -13,6 +13,7 @@ toc_footers:
 
 includes:
   - getting_started
+  - api_access
   - withdraw
   - ping
   - users
