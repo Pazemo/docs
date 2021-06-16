@@ -4,56 +4,40 @@
 
 Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to an bank account, you can choose from recipient list or add new address .
 
-## Get Account ID
+## Get your profile id
 
 > Example Request:
 
 ```shell
-curl -X GET http://api.stg.pazemo.com/users/{userId}/accounts \
-     -H "Accept: application/json" \
+curl -X GET http://api.stg.pazemo.com/users/ \
      -H "Authorization: Bearer <your api token>"
 ```
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": "string",
-    "createdTime": "1970-01-01T00:00:00.000Z",
-    "updatedTime": "1970-01-01T00:00:00.000Z",
-    "userId": "string",
-    "currencyId": "string",
-    "number": "string",
-    "user": "https://api.stg.pazemo.com/openapi.json#/components/schemas/UserWithRelations",
-    "currency": {
-      "id": "string",
-      "name": "string",
-      "symbol": "string",
-      "position": 0,
-      "visible": false,
-      "precision": 0,
-      "iconUrl": "string",
-      "countries": [
-        "https://api.stg.pazemo.com/openapi.json#/components/schemas/CountryWithRelations"
-      ],
-      "base": [
-        "https://api.stg.pazemo.com/openapi.json#/components/schemas/ForexRateWithRelations"
-      ]
-    },
-    "transactions": [
-      "https://api.stg.pazemo.com/openapi.json#/components/schemas/TransactionWithRelations"
-    ]
-  }
-]
+{
+  "id": "string",
+  "createdTime": "2021-06-09T09:46:26.065Z",
+  "updatedTime": "2021-06-09T09:46:26.065Z",
+  "status": "string",
+  "email": "user@example.com",
+  "mobile": "string",
+  "name": "string",
+  "partnerId": "string",
+  "roles": [
+    "string"
+  ],
+  "configs": {}
+}
 ```
 
-You only need to call this endpoint once to obtain your Account id. Account id values are required when making withdraws.
+You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making Withdraws.
 
-It’s recommended to always provide accountId when you’re creating new resources later. If you omit accountId then resource will by default belong to your personal profile.
+It’s recommended to always provide profileId when you’re creating new resources later (Create Quote, Create Recipient Account, Create Transfer). If you omit profileId then resource will by default belong to your personal profile. This might not be your intention, as you most probably want to execute transfers under your business profile.
 
 **Request**
 
-<code>GET http://api.stg.pazemo.com/users/{userId}/accounts</code>
+<code>GET http://api.stg.pazemo.com/users/</code>
 
 **Response**
 
@@ -61,15 +45,17 @@ Personal Profile Fields
 
 Field | Description | Format
 --------- | ------- | -----------
-id | Account id | Text.
+id | Personal profile id | Text.
 createdTime | Creation Date | "yyyy-mm-dd".
 updatedTime | Update Date | "yyyy-mm-dd".
-userID | User ID | Text.
-currencyID | Currency ID | Text.
-number | Mobile Number | Text.
-user |User | Text.
+status | Status | Text.
+email | Email | Text.
+mobile | Mobile Number | Text.
+name | Person Name | Text.
+partnerId | Partner ID | Text.
+roles | Role | Text.
 
-## Get Account ID
+## Create quote
 
 > Example Request:
 
@@ -101,6 +87,17 @@ curl -X 'POST' \
   "rate": 0
 }
 ```
+There are four steps to execute Withdraws:
+
+**Step 1: Create a quote**
+
+Step 2: Create a recipient account
+
+Step 3: Create a transfer
+
+Step 4: Fund a transfer
+
+Quote fetches current mid-market exchange rate that will be used for your transfer. Quote also calculates our fee and estimated delivery time.
 
 **Request**
 
@@ -114,7 +111,7 @@ sendAmount | Send Amount | Decimal.
 
 **Response**
 
-The withdraw field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the withdraw field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.
+The Withdraw field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the Withdraw field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.
 
 When showing the price of a transfer, always show the total fees of a payment option.
 
@@ -155,6 +152,16 @@ curl -X 'POST' \
   "number": "string"
 }
 ```
+
+There are four steps to execute Withdraws:
+
+Step 1: Create a quote
+
+**Step 2: Create a recipient account**
+
+Step 3: Create a transfer
+
+Step 4: Fund a transfer
 
 Recipient is a person or institution who is the ultimate beneficiary of your payment.
 
@@ -217,7 +224,17 @@ curl -X 'POST' \
 }
 ```
 
-A transfer is a withdraw order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.
+There are four steps to execute Withdraws:
+
+Step 1: Create a quote
+
+Step 2: Create a recipient account
+
+**Step 3: Create a transfer**
+
+Step 4: Fund a transfer
+
+A transfer is a Withdraw order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.
 
 **Request**
 
@@ -248,13 +265,16 @@ quoteId | Quote ID | Text.
 senderTransactionId | Transaction | Number.
 receiverTransactionId | Transaction | Number.
 
+### Avoiding duplicate transfers
+
+We use customerTransactionId field to avoid duplicate transfer requests. When your first call fails (error or timeout) then you should use the same value in customerTransactionId field that you used in the original call when you are submitting a retry message. This way we can treat subsequent retry messages as repeat messages and will not create duplicate transfers to your account.
 
 ## Fund transfer
 
 >Example Request:
 
 ```shell
-curl -X POST http://api.stg.pazemo.com/accounts/{accountId}/transactions/{id} \
+curl -X POST https://api.sandbox.transferPazemo.tech/v3/profiles/{profileId}/transfers/{transferId}/payments \
      -H "Authorization: Bearer <your api token>" \
      -H "Content-Type: application/json" \
      -d '{ 
@@ -272,10 +292,20 @@ curl -X POST http://api.stg.pazemo.com/accounts/{accountId}/transactions/{id} \
 }
 ```
 
-This API call is the final step for executing withdraws. Pazemo will now debit funds from your multi-currency account and start processing your withdraw. If your multi-currency account does not have the required funds to complete the action then this call will fail with an "insufficient funds" error.
+There are four steps to execute Withdraws:
+
+Step 1: Create a quote
+
+Step 2: Create a recipient account
+
+Step 3: Create a transfer
+
+**Step 4: Fund a transfer**
+
+This API call is the final step for executing Withdraws. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an "insufficient funds" error.
 
 Initial developer account has by default plentiful funds available for IDR, USD, SGD, MYR and EUR.
-You can add new currencies to your account via the user interface.
+You can add new currencies to your account via the user interface
 
 You can then top up your new currencies by converting funds from other currencies.
 

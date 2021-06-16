@@ -27,6 +27,7 @@ You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your persona
 
 Your API tokens section can be found at the bottom of the Settings page inside your Pazemo account. By default, you have no active tokens, You can create up to five API tokens.
 
+<img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/api-key.jpg">
 
 ## Keeping your API token safe
 
