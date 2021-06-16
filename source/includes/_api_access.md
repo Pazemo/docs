@@ -13,11 +13,11 @@ curl "api_endpoint_here"
 
 > Make sure to replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx` with your API key.
 
-Sign up for a developer account and get your personal API token for our sandbox. https://pazemo.com/register
+Sign up for a developer account and get your personal API token for our sandbox. [https://pazemo.com/register](https://pazemo.com/register)
 
 Add your API token as header parameter to every request like this:
 
-Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx
+Authorization: Bearer `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx`
 
 <aside class="notice">
 You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your personal API key.

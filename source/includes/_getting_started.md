@@ -2,16 +2,17 @@
 
 ## Learn about Pazemo.
 
-Pazemo and its multi-currency account features and pricing are best explained below.
+Pazemo and its multi-currency account features and pricing are best explained below, or you can contact us to info@pazemo.com for information.
 
-https://pazemo.com/pricing
+[https://pazemo.com/pricing](https://pazemo.com/pricing)
+
 
 ## Sign Up
 
 Sign up for your Pazemo account, activate your account, and complete verification.
 Using the product before integrating with our API will help you understand how our payment flow works. Just follow these four steps
 
-- Sign up for your Pazemo account https://pazemo.com/signup.
+- Sign up for your Pazemo account [https://pazemo.com/signup](https://pazemo.com/signup).
 
 - Complete verification – you need to do this before you start your technical integration. Also ensure you’re compliant with our Terms and Conditions and Acceptable Use Policy. Also make sure two-step log in is set up.
 

@@ -6,15 +6,15 @@ We use common HTTP status codes included in the response header to indicate succ
 
 Error Code | Meaning
 ---------- | -------
-400 | Bad Request -- Your request is invalid.
+200 | OK -- Everything worked as expected..
+400 | Bad Request -- The request was unacceptable, often due to missing a required parameter.
 401 | Unauthorized -- Your API key is wrong.
+402 | Request Failed -- The parameters were valid but the request failed.
 403 | Forbidden -- The data requested is hidden for administrators only.
 404 | Not Found -- The specified data could not be found.
-405 | Method Not Allowed -- You tried to access a data with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
+409 | Conflict -- The request conflicts with another request (perhaps due to using the same idempotent key).
 410 | Gone -- The data requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many datas! Slow down!
+429 | Too Many Requests -- Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
 500 | Internal Server Error -- We had a problem with our server. Try again later.
 503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
 

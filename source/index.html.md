@@ -26,8 +26,8 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Pazemo Platform API documentation, You can explore the different ways to use our API and choose the right one for you below.
+The Pezemo API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
 
-Pazemo API is organized around REST. We use built-in HTTP features and HTTP verbs and we return all responses in JSON.
+You can use the Pazemo API in test mode, which does not affect your live data or interact with the banking networks. The API key you use to authenticate the request determines whether the request is live mode or test mode.
 
-
+The Pazemo API differs for every account as we release new versions and tailor functionality. Log in to see docs customized to your version of the API, with your test key and data.
