@@ -435,19 +435,21 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Pazemo Platform API documentation, You can explore the different ways to use our API and choose the right one for you below.</p>
+<p>The Pezemo API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
 
-<p>Pazemo API is organized around REST. We use built-in HTTP features and HTTP verbs and we return all responses in JSON.</p>
+<p>You can use the Pazemo API in test mode, which does not affect your live data or interact with the banking networks. The API key you use to authenticate the request determines whether the request is live mode or test mode.</p>
+
+<p>The Pazemo API differs for every account as we release new versions and tailor functionality. Log in to see docs customized to your version of the API, with your test key and data.</p>
 <h1 id='getting-started'>Getting started</h1><h2 id='learn-about-pazemo'>Learn about Pazemo.</h2>
-<p>Pazemo and its multi-currency account features and pricing are best explained below.</p>
+<p>Pazemo and its multi-currency account features and pricing are best explained below, or you can contact us to info@pazemo.com for information.</p>
 
-<p>https://pazemo.com/pricing</p>
+<p><a href="https://pazemo.com/pricing">https://pazemo.com/pricing</a></p>
 <h2 id='sign-up'>Sign Up</h2>
 <p>Sign up for your Pazemo account, activate your account, and complete verification.
 Using the product before integrating with our API will help you understand how our payment flow works. Just follow these four steps</p>
 
 <ul>
-<li><p>Sign up for your Pazemo account https://pazemo.com/signup.</p></li>
+<li><p>Sign up for your Pazemo account <a href="https://pazemo.com/signup">https://pazemo.com/signup</a>.</p></li>
 <li><p>Complete verification – you need to do this before you start your technical integration. Also ensure you’re compliant with our Terms and Conditions and Acceptable Use Policy. Also make sure two-step log in is set up.</p></li>
 <li><p>Activate at least one currency in your multi-currency account, deposit small amount (via card or bank transfer) and setup your first payment. This penny-testing is not mandatory of course, but we do recommended it so you will understand how Pazemo payment flow works.</p></li>
 <li><p>Verify that our coverage includes your currency route(s). Check Supported Currencies. Please note that there are few restrictions for businesses, please review Restricted Business Routes</p></li>
@@ -471,11 +473,11 @@ curl <span class="s2">"api_endpoint_here"</span>
 <p>Make sure to replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your API key.</p>
 </blockquote>
 
-<p>Sign up for a developer account and get your personal API token for our sandbox. https://pazemo.com/register</p>
+<p>Sign up for a developer account and get your personal API token for our sandbox. <a href="https://pazemo.com/register">https://pazemo.com/register</a></p>
 
 <p>Add your API token as header parameter to every request like this:</p>
 
-<p>Authorization: Bearer xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</p>
+<p>Authorization: Bearer <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code></p>
 
 <aside class="notice">
 You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your personal API key.
@@ -1351,12 +1353,20 @@ You can add new currencies to your account via the user interface</p>
 </tr>
 </thead><tbody>
 <tr>
+<td>200</td>
+<td>OK -- Everything worked as expected..</td>
+</tr>
+<tr>
 <td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
+<td>Bad Request -- The request was unacceptable, often due to missing a required parameter.</td>
 </tr>
 <tr>
 <td>401</td>
 <td>Unauthorized -- Your API key is wrong.</td>
+</tr>
+<tr>
+<td>402</td>
+<td>Request Failed -- The parameters were valid but the request failed.</td>
 </tr>
 <tr>
 <td>403</td>
@@ -1367,24 +1377,16 @@ You can add new currencies to your account via the user interface</p>
 <td>Not Found -- The specified data could not be found.</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a data with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
+<td>409</td>
+<td>Conflict -- The request conflicts with another request (perhaps due to using the same idempotent key).</td>
 </tr>
 <tr>
 <td>410</td>
 <td>Gone -- The data requested has been removed from our servers.</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
 <td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many datas! Slow down!</td>
+<td>Too Many Requests -- Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.</td>
 </tr>
 <tr>
 <td>500</td>
