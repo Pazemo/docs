@@ -1,8 +1,10 @@
 # Withdraw
 
-## Withdraw Proccess
+Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, from recipients list or add new recipients.
 
-Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, recipients list or add new recipients .
+Before you can request a withdraw, make sure you have create Multy-Currency accounts and add proper recipients, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.
+
+From your dashboard, go to withdraw tab from sidebar menu, select available currency accounts, recipients, fill amount and click `WITHDRAW IDR` button to process your withdraw.
 
 <img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg">
 

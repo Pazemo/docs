@@ -15,6 +15,8 @@ includes:
   - getting_started
   - api_access
   - withdraw
+  - accounts
+  - recipients
   - ping
   - users
   - errors
