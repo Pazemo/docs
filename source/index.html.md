@@ -2,7 +2,7 @@
 title: API Reference Pazemo
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell: Example
+  - shell: Request & Response Examples
 
 
 toc_footers:
@@ -15,8 +15,8 @@ includes:
   - withdraw
   - accounts
   - recipients
-  - ping
   - users
+  - ping
   - errors
 
 search: true

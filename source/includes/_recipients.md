@@ -6,13 +6,13 @@ Create a Recipients to receive withdrawal. You can add recipients with 2 ways, d
 
 ### Create Recipient in Withdraw Dashboard
 
-<img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg">
+<a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></a>
 
-Right after select currency account, select `New Address`, select available Banks, then input number and name for your new recipient, so you next time can use it from `Recipients list` easily.
+After select currency account, select `New Address`, select available Banks, then input number and name for your new recipient, so you next time can use it from `Recipients list` easily.
 
 ### Create Recipient in Recipients Dashboard
 
-<img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg">
+<a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></a>
 
 Another way to create Recipients, from sidebar menu click `Recipients`, `+ ADD NEW RECIPIENT` then select from available currencies and banks provided then fill account number and label.
 

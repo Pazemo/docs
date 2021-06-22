@@ -2,11 +2,11 @@
 
 Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, from recipients list or add new recipients.
 
-Before you can request a withdraw, make sure you have create Multy-Currency accounts and add proper recipients, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.
+Before you can request a withdraw, make sure you have <a href="#accounts">created Multy-Currency accounts</a> and <a href="#recipients">add proper recipients</a>, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.
 
-From your dashboard, go to `Withdraw` tab from sidebar menu, select available currency accounts, recipients, fill amount and click `WITHDRAW IDR` button to process your withdraw.
+From your main dashboard, go to `Withdraw` dashboard from sidebar menu, select available currency accounts, recipients, fill amount and click `WITHDRAW IDR` button to process your withdraw.
 
-<a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click to View In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a>
+<a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a>
 
 ## Create Withdraw
 
@@ -196,11 +196,11 @@ curl -X 'POST' \
   "referenceData": {}
 }
 ```
-Withdraw Confirmation
+Withdraw Cancellation
 
 **Request**
 
-<code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm</code>
+<code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel</code>
 
 Field | Description | Format
 --------- | ------- | -----------
