@@ -364,9 +364,6 @@
             <a href="#withdraw" class="toc-h1 toc-link" data-title="Withdraw">Withdraw</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#withdraw-proccess" class="toc-h2 toc-link" data-title="Withdraw Proccess">Withdraw Proccess</a>
-                  </li>
-                  <li>
                     <a href="#create-withdraw" class="toc-h2 toc-link" data-title="Create Withdraw">Create Withdraw</a>
                   </li>
                   <li>
@@ -374,6 +371,22 @@
                   </li>
                   <li>
                     <a href="#cancellation" class="toc-h2 toc-link" data-title="cancellation">cancellation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#accounts" class="toc-h1 toc-link" data-title="Accounts">Accounts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-account" class="toc-h2 toc-link" data-title="Create Account">Create Account</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#recipients" class="toc-h1 toc-link" data-title="Recipients">Recipients</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-recipients" class="toc-h2 toc-link" data-title="Create Recipients">Create Recipients</a>
                   </li>
               </ul>
           </li>
@@ -589,8 +602,12 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td><code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code></td>
 </tr>
 </tbody></table>
-<h1 id='withdraw'>Withdraw</h1><h2 id='withdraw-proccess'>Withdraw Proccess</h2>
-<p>Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, recipients list or add new recipients .</p>
+<h1 id='withdraw'>Withdraw</h1>
+<p>Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, from recipients list or add new recipients.</p>
+
+<p>Before you can request a withdraw, make sure you have create Multy-Currency accounts and add proper recipients, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.</p>
+
+<p>From your dashboard, go to withdraw tab from sidebar menu, select available currency accounts, recipients, fill amount and click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
 
 <p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></p>
 <h2 id='create-withdraw'>Create Withdraw</h2>
@@ -1035,6 +1052,256 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>referenceData</td>
 <td>Reference Data</td>
 <td>Object.</td>
+</tr>
+</tbody></table>
+<h1 id='accounts'>Accounts</h1>
+<p>Create a Multy-Currency Account: Indonesian Rupiah (IDR), US DOllar (USD), Singapore Dollar (SGD), Malaysian Ringgit (MYR), Euro (EUR).</p>
+
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/account-list.jpg"></p>
+<h2 id='create-account'>Create Account</h2>
+<p>You can create account from sidebar menu and click <code>+ New Account</code>, then select from available currencies provided.</p>
+
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/create-account.jpg"></p>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
+  <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+  "currencyId": "string",
+  "number": "string"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create New Account</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>POST http://api.stg.pazemo.com/users/{userId}/accounts</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userID</td>
+<td>User ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>number</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Creation Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>currencyId</td>
+<td>Currency ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Number</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+<h1 id='recipients'>Recipients</h1><h2 id='create-recipients'>Create Recipients</h2>
+<p>Create a Recipients to receive withdrawal. You can add recipients with 2 ways, directly from your <code>Withdraw</code> dashboard or create from <code>Recipient Lists</code> dashboard.</p>
+<h3 id='create-recipient-in-withdraw-dashboard'>Create Recipient in Withdraw Dashboard</h3>
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></p>
+
+<p>Right after select currency account, select <code>New Address</code>, select available Banks, then input number and name for your new recipient, so you next time can use it from <code>Recipients list</code> easily.</p>
+<h3 id='create-recipient-in-recipients-dashboard'>Create Recipient in Recipients Dashboard</h3>
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></p>
+
+<p>Another way to create Recipients, from sidebar menu click <code>Recipients</code>, <code>+ ADD NEW RECIPIENT</code> then select from available currencies and banks provided then fill account number and label.</p>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
+  <span class="s1">'http://api.stg.pazemo.com/beneficiaries'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s1">'{
+  "updatedTime": "2019-08-24T14:15:22Z",
+  "accountId": "string",
+  "bankId": "string",
+  "address": "string",
+  "email": "string",
+  "label": "string",
+  "type": "personal"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create New Recipient</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>POST http://api.stg.pazemo.com/beneficiaries</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>updatedTime</td>
+<td>Updated Time</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>bankId</td>
+<td>Bank ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>Label</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Recipient ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>bankId</td>
+<td>Bank ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>Label</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type</td>
+<td>Text.</td>
 </tr>
 </tbody></table>
 <h1 id='pings'>Pings</h1><h2 id='check'>Check</h2>
