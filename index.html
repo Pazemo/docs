@@ -312,7 +312,7 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
-            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting started">Getting started</a>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#learn-about-pazemo" class="toc-h2 toc-link" data-title="Learn about Pazemo.">Learn about Pazemo.</a>
@@ -348,9 +348,6 @@
                   </li>
                   <li>
                     <a href="#limiting-token-access-by-ip" class="toc-h2 toc-link" data-title="Limiting token access by IP">Limiting token access by IP</a>
-                  </li>
-                  <li>
-                    <a href="#testing" class="toc-h2 toc-link" data-title="Testing">Testing</a>
                   </li>
                   <li>
                     <a href="#environments" class="toc-h2 toc-link" data-title="Environments">Environments</a>
@@ -444,7 +441,7 @@
 <p>You can use the Pazemo API in test mode, which does not affect your live data or interact with the banking networks. The API key you use to authenticate the request determines whether the request is live mode or test mode.</p>
 
 <p>The Pazemo API differs for every account as we release new versions and tailor functionality. Log in to see docs customized to your version of the API, with your test key and data.</p>
-<h1 id='getting-started'>Getting started</h1><h2 id='learn-about-pazemo'>Learn about Pazemo.</h2>
+<h1 id='getting-started'>Getting Started</h1><h2 id='learn-about-pazemo'>Learn about Pazemo.</h2>
 <p>Pazemo and its multi-currency account features and pricing are best explained below, or you can contact us to info@pazemo.com for information.</p>
 
 <p><a href="https://pazemo.com/pricing">https://pazemo.com/pricing</a></p>
@@ -579,8 +576,6 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </ul>
 
 <p>If a request is being made using an IP address that is not in the whitelisted IP addresses, the server will respond with a 401 Unauthorized HTTP status code.</p>
-<h2 id='testing'>Testing</h2>
-<p>By default in our sandbox environment strong customer authentication is disabled. You can enable it for your account on the public keys management page.</p>
 
 <p>The option for toggling the check yourself will also be available in production as long as it is optional.</p>
 <h2 id='environments'>Environments</h2>
@@ -823,15 +818,15 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 </tbody></table>
 <h1 id='recipients'>Recipients</h1><h2 id='create-recipients'>Create Recipients</h2>
-<p>Create a Recipients to receive withdrawal. You can add recipients with 2 ways, directly from your <code>Withdraw</code> dashboard or create from <code>Recipient Lists</code> dashboard.</p>
+<p>Create a Recipients to receive withdrawal. You can add recipients from our platform with 2 ways, directly from your <code>Withdraw</code> dashboard or create from <code>Recipients</code> dashboard.</p>
 <h3 id='create-recipient-in-withdraw-dashboard'>Create Recipient in Withdraw Dashboard</h3>
 <p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></a></p>
 
-<p>After select currency account, select <code>New Address</code>, select available Banks, then input number and name for your new recipient, so you next time can use it from <code>Recipients list</code> easily.</p>
+<p>After select account source, select <code>New Address</code> for your new recipient, select available Banks, then input number and name, so you next time can use it from <code>Recipients list</code> easily.</p>
 <h3 id='create-recipient-in-recipients-dashboard'>Create Recipient in Recipients Dashboard</h3>
 <p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></a></p>
 
-<p>Another way to create Recipients, from sidebar menu click <code>Recipients</code>, <code>+ ADD NEW RECIPIENT</code> then select from available currencies and banks provided then fill account number and label.</p>
+<p>Another way to create Recipients, at your main dashboard sidebar menu click <code>Recipients</code>, <code>+ ADD NEW RECIPIENT</code> then select from available currencies and banks provided then fill account number and label.</p>
 
 <blockquote>
 <p>Example Request:</p>
@@ -982,9 +977,9 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <h1 id='withdraw'>Withdraw</h1>
 <p>Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, from recipients list or add new recipients.</p>
 
-<p>Before you can request a withdraw, make sure you have <a href="#accounts">created Multy-Currency accounts</a> and <a href="#recipients">add proper recipients</a>, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.</p>
+<p>Before you can request a withdraw, make sure you have <a href="#accounts">created Multy-Currency accounts</a> and <a href="#recipients">add proper recipients</a>, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or <a href="#exchange">exchange</a> from another account (USD, SGD, MYR, EUR) to IDR.</p>
 
-<p>From your main dashboard, go to <code>Withdraw</code> dashboard from sidebar menu, select available currency accounts, recipients, fill amount and click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
+<p>From your main dashboard, go to <code>Withdraw</code> dashboard from sidebar menu, select available currency accounts and recipients, fill amount, click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
 
 <p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a></p>
 <h2 id='create-withdraw'>Create Withdraw</h2>
