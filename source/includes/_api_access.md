@@ -128,10 +128,6 @@ Please note:
 
 If a request is being made using an IP address that is not in the whitelisted IP addresses, the server will respond with a 401 Unauthorized HTTP status code.
 
-## Testing
-
-By default in our sandbox environment strong customer authentication is disabled. You can enable it for your account on the public keys management page.
-
 The option for toggling the check yourself will also be available in production as long as it is optional.
 
 ## Environments
