@@ -367,7 +367,7 @@
                     <a href="#confirmation" class="toc-h2 toc-link" data-title="Confirmation">Confirmation</a>
                   </li>
                   <li>
-                    <a href="#cancellation" class="toc-h2 toc-link" data-title="cancellation">cancellation</a>
+                    <a href="#cancellation" class="toc-h2 toc-link" data-title="Cancellation">Cancellation</a>
                   </li>
               </ul>
           </li>
@@ -604,9 +604,9 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 
 <p>Before you can request a withdraw, make sure you have create Multy-Currency accounts and add proper recipients, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.</p>
 
-<p>From your dashboard, go to withdraw tab from sidebar menu, select available currency accounts, recipients, fill amount and click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
+<p>From your dashboard, go to <code>Withdraw</code> tab from sidebar menu, select available currency accounts, recipients, fill amount and click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
 
-<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></p>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click to View In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a></p>
 <h2 id='create-withdraw'>Create Withdraw</h2>
 <blockquote>
 <p>Example Request:</p>
@@ -662,9 +662,59 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 </thead><tbody>
 <tr>
-<td>accountID</td>
+<td>accountId</td>
 <td>Account ID</td>
 <td>Text.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Withdraw ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>adressName</td>
+<td>Address Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>Notes</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>Prefix</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>beneficiaryId</td>
+<td>Beneficiary ID</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Reference</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>referenceData</td>
+<td>Reference Data</td>
+<td>Object.</td>
 </tr>
 </tbody></table>
 
@@ -902,7 +952,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>Object.</td>
 </tr>
 </tbody></table>
-<h2 id='cancellation'>cancellation</h2>
+<h2 id='cancellation'>Cancellation</h2>
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
