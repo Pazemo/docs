@@ -6,7 +6,7 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference Pazemo</title>
-    <link href="images/favicon.ico" rel="icon" type="image/ico" />
+    <link href="images/favicon-1c5bf4a2.ico" rel="icon" type="image/ico" />
     <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -301,7 +301,7 @@
     <div class="toc-wrapper">
       <img src="images/logo-1c5bf4a2.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">Example</a>
+              <a href="#" data-language-name="shell">Request & Response Examples</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -388,6 +388,17 @@
               </ul>
           </li>
           <li>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
+                  </li>
+                  <li>
+                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#pings" class="toc-h1 toc-link" data-title="Pings">Pings</a>
               <ul class="toc-list-h2">
                   <li>
@@ -398,17 +409,6 @@
                   </li>
                   <li>
                     <a href="#ping-queue" class="toc-h2 toc-link" data-title="Ping Queue">Ping Queue</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
-            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
-                  </li>
-                  <li>
-                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
                   </li>
               </ul>
           </li>
@@ -490,7 +490,7 @@ You must replace <code>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx</code> with your persona
 <h2 id='acquiring-your-api-token'>Acquiring your API token</h2>
 <p>Your API tokens section can be found at the bottom of the Settings page inside your Pazemo account. By default, you have no active tokens, You can create up to five API tokens.</p>
 
-<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/api-key.jpg"></p>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/api-key.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/api-key.jpg"></a></p>
 <h2 id='keeping-your-api-token-safe'>Keeping your API token safe</h2>
 <p>Your API tokens should be guarded closely. They represent your identity and authorization and can be used to interact with your Pazemo account on your behalf. Whoever has access to your token can access your account details and history. In the case of a Full access token, they can also send transfers. Once you obtain an API token from us, it is on you to keep it safe.</p>
 
@@ -602,11 +602,11 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <h1 id='withdraw'>Withdraw</h1>
 <p>Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, from recipients list or add new recipients.</p>
 
-<p>Before you can request a withdraw, make sure you have create Multy-Currency accounts and add proper recipients, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.</p>
+<p>Before you can request a withdraw, make sure you have <a href="#accounts">created Multy-Currency accounts</a> and <a href="#recipients">add proper recipients</a>, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.</p>
 
-<p>From your dashboard, go to <code>Withdraw</code> tab from sidebar menu, select available currency accounts, recipients, fill amount and click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
+<p>From your main dashboard, go to <code>Withdraw</code> dashboard from sidebar menu, select available currency accounts, recipients, fill amount and click <code>WITHDRAW IDR</code> button to process your withdraw.</p>
 
-<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click to View In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a></p>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a></p>
 <h2 id='create-withdraw'>Create Withdraw</h2>
 <blockquote>
 <p>Example Request:</p>
@@ -986,11 +986,11 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
   </span><span class="nl">"referenceData"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>Withdraw Confirmation</p>
+<p>Withdraw Cancellation</p>
 
 <p><strong>Request</strong></p>
 
-<p><code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm</code></p>
+<p><code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel</code></p>
 
 <table><thead>
 <tr>
@@ -1201,11 +1201,11 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <h1 id='recipients'>Recipients</h1><h2 id='create-recipients'>Create Recipients</h2>
 <p>Create a Recipients to receive withdrawal. You can add recipients with 2 ways, directly from your <code>Withdraw</code> dashboard or create from <code>Recipient Lists</code> dashboard.</p>
 <h3 id='create-recipient-in-withdraw-dashboard'>Create Recipient in Withdraw Dashboard</h3>
-<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></p>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></a></p>
 
-<p>Right after select currency account, select <code>New Address</code>, select available Banks, then input number and name for your new recipient, so you next time can use it from <code>Recipients list</code> easily.</p>
+<p>After select currency account, select <code>New Address</code>, select available Banks, then input number and name for your new recipient, so you next time can use it from <code>Recipients list</code> easily.</p>
 <h3 id='create-recipient-in-recipients-dashboard'>Create Recipient in Recipients Dashboard</h3>
-<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></p>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></a></p>
 
 <p>Another way to create Recipients, from sidebar menu click <code>Recipients</code>, <code>+ ADD NEW RECIPIENT</code> then select from available currencies and banks provided then fill account number and label.</p>
 
@@ -1356,127 +1356,6 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>Text.</td>
 </tr>
 </tbody></table>
-<h1 id='pings'>Pings</h1><h2 id='check'>Check</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/check"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Content-Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Check server</p>
-<h3 id='request'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/check</code></p>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>greeting</td>
-<td>Greeting</td>
-<td>string</td>
-</tr>
-<tr>
-<td>date</td>
-<td>Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>url</td>
-<td>URL</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>Content-Type</td>
-<td>Content Type</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id='ping'>Ping</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/ping"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> 
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">Return</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">PingController.ping</span><span class="w">
-</span></code></pre></div>
-<p>Ping the server and retrieve the server version.</p>
-<h3 id='request-2'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/ping</code></p>
-<h3 id='response-2'>Response</h3>
-<p>Return value of PingController.ping</p>
-<h2 id='ping-queue'>Ping Queue</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/pingQueue"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"Content-Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get Ping Queue</p>
-<h3 id='request-3'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/pingQueue</code></p>
-<h3 id='response-3'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>greeting</td>
-<td>Greeting</td>
-<td>string</td>
-</tr>
-<tr>
-<td>date</td>
-<td>Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>url</td>
-<td>URL</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>Content-Type</td>
-<td>Content Type</td>
-<td>string</td>
-</tr>
-</tbody></table>
 <h1 id='users'>Users</h1><h2 id='get-by-id'>Get by ID</h2>
 <blockquote>
 <p>Example Request:</p>
@@ -1604,6 +1483,127 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>string</td>
 </tr>
 </tbody></table>
+<h1 id='pings'>Pings</h1><h2 id='check'>Check</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/check"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Content-Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Check server</p>
+<h3 id='request'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/check</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>greeting</td>
+<td>Greeting</td>
+<td>string</td>
+</tr>
+<tr>
+<td>date</td>
+<td>Date</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>url</td>
+<td>URL</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>Content Type</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h2 id='ping'>Ping</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/ping"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> 
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="err">Return</span><span class="w"> </span><span class="err">value</span><span class="w"> </span><span class="err">of</span><span class="w"> </span><span class="err">PingController.ping</span><span class="w">
+</span></code></pre></div>
+<p>Ping the server and retrieve the server version.</p>
+<h3 id='request-2'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/ping</code></p>
+<h3 id='response-2'>Response</h3>
+<p>Return value of PingController.ping</p>
+<h2 id='ping-queue'>Ping Queue</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/pingQueue"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"greeting"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"Content-Type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get Ping Queue</p>
+<h3 id='request-3'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/pingQueue</code></p>
+<h3 id='response-3'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>greeting</td>
+<td>Greeting</td>
+<td>string</td>
+</tr>
+<tr>
+<td>date</td>
+<td>Date</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>url</td>
+<td>URL</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>Content-Type</td>
+<td>Content Type</td>
+<td>string</td>
+</tr>
+</tbody></table>
 <h1 id='errors'>Errors</h1><h2 id='http-status-codes'>HTTP Status Codes</h2>
 <p>We use common HTTP status codes included in the response header to indicate success or failure.</p>
 
@@ -1703,7 +1703,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">Example</a>
+                <a href="#" data-language-name="shell">Request & Response Examples</a>
           </div>
       </div>
     </div>
