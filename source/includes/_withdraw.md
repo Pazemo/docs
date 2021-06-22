@@ -4,9 +4,9 @@ Pazemo can be added as a withdraw option on your site for beneficiaries to recei
 
 Before you can request a withdraw, make sure you have create Multy-Currency accounts and add proper recipients, for example if you want to withdraw to Indonesian Bank, you have to create IDR account or exchange from another account (USD, SGD, MYR, EUR) to IDR.
 
-From your dashboard, go to withdraw tab from sidebar menu, select available currency accounts, recipients, fill amount and click `WITHDRAW IDR` button to process your withdraw.
+From your dashboard, go to `Withdraw` tab from sidebar menu, select available currency accounts, recipients, fill amount and click `WITHDRAW IDR` button to process your withdraw.
 
-<img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg">
+<a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg" target="_blank" title="Click to View In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></a>
 
 ## Create Withdraw
 
@@ -60,7 +60,17 @@ curl  -X POST "http://api.stg.pazemo.com/accounts/{accountId}/withdraw" \
 
 Field | Description | Format
 --------- | ------- | -----------
-accountID | Account ID | Text.
+accountId | Account ID | Text.
+id | Withdraw ID | Text.
+updatedTime | Update Date | "yyyy-mm-dd".
+address | Address | Text.
+adressName | Address Name | Text.
+amount | Amount | Number.
+notes | Notes | Text.
+prefix | Prefix | Text.
+beneficiaryId | Beneficiary ID | Number.
+reference | Reference | Text.
+referenceData | Reference Data | Object.
 
 **Response**
 
@@ -150,7 +160,7 @@ beneficiaryId | Beneficiary ID | Number.
 reference | Reference | Text.
 referenceData | Reference Data | Object.
 
-## cancellation
+## Cancellation
 
 > Example Request:
 
