@@ -364,22 +364,16 @@
             <a href="#withdraw" class="toc-h1 toc-link" data-title="Withdraw">Withdraw</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#withdraw-flows" class="toc-h2 toc-link" data-title="Withdraw flows">Withdraw flows</a>
+                    <a href="#withdraw-proccess" class="toc-h2 toc-link" data-title="Withdraw Proccess">Withdraw Proccess</a>
                   </li>
                   <li>
-                    <a href="#get-your-profile-id" class="toc-h2 toc-link" data-title="Get your profile id">Get your profile id</a>
+                    <a href="#create-withdraw" class="toc-h2 toc-link" data-title="Create Withdraw">Create Withdraw</a>
                   </li>
                   <li>
-                    <a href="#create-quote" class="toc-h2 toc-link" data-title="Create quote">Create quote</a>
+                    <a href="#confirmation" class="toc-h2 toc-link" data-title="Confirmation">Confirmation</a>
                   </li>
                   <li>
-                    <a href="#create-recipient-account" class="toc-h2 toc-link" data-title="Create recipient account">Create recipient account</a>
-                  </li>
-                  <li>
-                    <a href="#create-transfer" class="toc-h2 toc-link" data-title="Create transfer">Create transfer</a>
-                  </li>
-                  <li>
-                    <a href="#fund-transfer" class="toc-h2 toc-link" data-title="Fund transfer">Fund transfer</a>
+                    <a href="#cancellation" class="toc-h2 toc-link" data-title="cancellation">cancellation</a>
                   </li>
               </ul>
           </li>
@@ -456,8 +450,9 @@ Using the product before integrating with our API will help you understand how o
 <li><p>Please note that our Fixed Rate functionality is intended to provide time for customers to send funds to Pazemo, while holding the rate for them. Pazemo is not a trading platform and the Fixed Rate functionality is automatically disabled if abusive behaviour (such as multiple transfer creation and selective completion) is detected.</p></li>
 </ul>
 <h2 id='choose-the-best-tool-for-you'>Choose the best tool for you</h2>
+<p>You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:</p>
+
 <ul>
-<li><p>You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:</p></li>
 <li><p>Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Pazemo, and pay for the batch. No development effort needed.</p></li>
 <li><p>API integration. Completely automate your payment process by sending payment orders via the Pazemo Platform API.</p></li>
 </ul>
@@ -579,55 +574,87 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 
 <p>The option for toggling the check yourself will also be available in production as long as it is optional.</p>
 <h2 id='environments'>Environments</h2>
-<ul>
-<li>The LIVE API is located at</li>
-</ul>
+<table><thead>
+<tr>
+<th>SERVER</th>
+<th>Base URL</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>LIVE API</td>
+<td><code><a href="https://api.pazemo.com/">https://api.pazemo.com/</a></code></td>
+</tr>
+<tr>
+<td>SANDBOX API</td>
+<td><code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code></td>
+</tr>
+</tbody></table>
+<h1 id='withdraw'>Withdraw</h1><h2 id='withdraw-proccess'>Withdraw Proccess</h2>
+<p>Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to a bank account, you can choose from your bank, recipients list or add new recipients .</p>
 
-<p><code><a href="https://api.pazemo.com/">https://api.pazemo.com/</a></code></p>
-
-<ul>
-<li>The SANDBOX API is located at</li>
-</ul>
-
-<p><code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code></p>
-<h1 id='withdraw'>Withdraw</h1><h2 id='withdraw-flows'>Withdraw flows</h2>
-<p>Pazemo can be added as a withdraw option on your site for beneficiaries to receive their withdraw through to an bank account, you can choose from recipient list or add new address .</p>
-<h2 id='get-your-profile-id'>Get your profile id</h2>
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/withdraw.jpg"></p>
+<h2 id='create-withdraw'>Create Withdraw</h2>
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET http://api.stg.pazemo.com/users/ <span class="se">\</span>
-     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s2">"http://api.stg.pazemo.com/accounts/{accountId}/withdraw"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+      <span class="nt">-d</span> <span class="s2">"{
+  "</span><span class="nb">id</span><span class="s2">": "</span>string<span class="s2">",
+  "</span>updatedTime<span class="s2">": "</span>2019-08-24T14:15:22Z<span class="s2">",
+  "</span>accountId<span class="s2">": "</span>string<span class="s2">",
+  "</span>address<span class="s2">": "</span>string<span class="s2">",
+  "</span>addressName<span class="s2">": "</span>string<span class="s2">",
+  "</span>amount<span class="s2">": 0,
+  "</span>notes<span class="s2">": "</span>string<span class="s2">",
+  "</span>prefix<span class="s2">": "</span>string<span class="s2">",
+  "</span>beneficiaryId<span class="s2">": 0,
+  "</span>reference<span class="s2">": "</span>string<span class="s2">",
+  "</span>referenceData<span class="s2">": {}
+}"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-09T09:46:26.065Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-09T09:46:26.065Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"configs"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flip"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addressName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"beneficiaryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"referenceData"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>You only need to call this endpoint once to obtain your user profile id. Your personal and business profiles have different IDs. Profile id values are required when making Withdraws.</p>
-
-<p>It’s recommended to always provide profileId when you’re creating new resources later (Create Quote, Create Recipient Account, Create Transfer). If you omit profileId then resource will by default belong to your personal profile. This might not be your intention, as you most probably want to execute transfers under your business profile.</p>
-
 <p><strong>Request</strong></p>
 
-<p><code>GET http://api.stg.pazemo.com/users/</code></p>
+<p><code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>accountID</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
 
 <p><strong>Response</strong></p>
-
-<p>Personal Profile Fields</p>
 
 <table><thead>
 <tr>
@@ -638,7 +665,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>Personal profile id</td>
+<td>Withdraw ID</td>
 <td>Text.</td>
 </tr>
 <tr>
@@ -652,49 +679,76 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>&quot;yyyy-mm-dd&quot;.</td>
 </tr>
 <tr>
+<td>accountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>transactionId</td>
+<td>Transaction ID</td>
+<td>Number.</td>
+</tr>
+<tr>
 <td>status</td>
-<td>Status</td>
+<td>WIthdraw Status</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>email</td>
-<td>Email</td>
+<td>network</td>
+<td>Network Name</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>mobile</td>
-<td>Mobile Number</td>
+<td>address</td>
+<td>Address</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>name</td>
-<td>Person Name</td>
+<td>amount</td>
+<td>Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>feeAmount</td>
+<td>Fee Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>Notes</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>partnerId</td>
-<td>Partner ID</td>
+<td>prefix</td>
+<td>Prefix</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>roles</td>
-<td>Role</td>
+<td>beneficiaryId</td>
+<td>Beneficiary ID</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Reference</td>
 <td>Text.</td>
+</tr>
+<tr>
+<td>referenceData</td>
+<td>Reference Data</td>
+<td>Object.</td>
 </tr>
 </tbody></table>
-<h2 id='create-quote'>Create quote</h2>
+<h2 id='confirmation'>Confirmation</h2>
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/quotes'</span> <span class="se">\</span>
+  <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
-  "sendCurrencyId": "string",
-  "receiveCurrencyId": "string",
-  "sendAmount": 0,
-  "rate": 0
+"authorizationCode": "string"
 }'</span>
 </code></pre></div>
 <blockquote>
@@ -702,31 +756,28 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-09T10:22:50.378Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sendCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receiveCurrencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"sendAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receiveAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"rate"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flip"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addressName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"beneficiaryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"referenceData"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>There are four steps to execute Withdraws:</p>
-
-<p><strong>Step 1: Create a quote</strong></p>
-
-<p>Step 2: Create a recipient account</p>
-
-<p>Step 3: Create a transfer</p>
-
-<p>Step 4: Fund a transfer</p>
-
-<p>Quote fetches current mid-market exchange rate that will be used for your transfer. Quote also calculates our fee and estimated delivery time.</p>
+<p>Withdraw Confirmation</p>
 
 <p><strong>Request</strong></p>
 
-<p><code>POST https://api.stg.pazemo.com/quotes</code></p>
+<p><code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm</code></p>
 
 <table><thead>
 <tr>
@@ -736,27 +787,23 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 </thead><tbody>
 <tr>
-<td>sendCurrencyId</td>
-<td>Currency Code</td>
+<td>accountID</td>
+<td>Account ID</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>receiveCurrencyId</td>
-<td>Currency Code</td>
+<td>ID</td>
+<td>ID</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>sendAmount</td>
-<td>Send Amount</td>
-<td>Decimal.</td>
+<td>authorizationCode</td>
+<td>Autorization Code</td>
+<td>Text.</td>
 </tr>
 </tbody></table>
 
 <p><strong>Response</strong></p>
-
-<p>The Withdraw field is used to select the correct entry in the paymentOptions array in order to know which fees to display to your customer. Find the paymentOption that matches the Withdraw field shown at the top level of the quote resource and payIn based on the settlement model the bank is using. By default this is BANK_TRANSFER, unless you are using a prefunded or bulk settlement model.</p>
-
-<p>When showing the price of a transfer, always show the total fees of a payment option.</p>
 
 <table><thead>
 <tr>
@@ -767,7 +814,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>Personal profile id</td>
+<td>Withdraw ID</td>
 <td>Text.</td>
 </tr>
 <tr>
@@ -776,47 +823,81 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>&quot;yyyy-mm-dd&quot;.</td>
 </tr>
 <tr>
-<td>userId</td>
-<td>User ID</td>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>sendCurrencyId</td>
-<td>Currency Code</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>receiveCurrencyId</td>
-<td>Currency Code</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>sendAmount</td>
-<td>Send Amount</td>
-<td>Decimal.</td>
-</tr>
-<tr>
-<td>receiveAmount</td>
-<td>Receive Amount</td>
-<td>Decimal.</td>
+<td>transactionId</td>
+<td>Transaction ID</td>
+<td>Number.</td>
 </tr>
 <tr>
 <td>status</td>
-<td>Status</td>
+<td>WIthdraw Status</td>
 <td>Text.</td>
 </tr>
+<tr>
+<td>network</td>
+<td>Network Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>feeAmount</td>
+<td>Fee Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>Notes</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>Prefix</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>beneficiaryId</td>
+<td>Beneficiary ID</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Reference</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>referenceData</td>
+<td>Reference Data</td>
+<td>Object.</td>
+</tr>
 </tbody></table>
-<h2 id='create-recipient-account'>Create recipient account</h2>
+<h2 id='cancellation'>cancellation</h2>
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/users/12345/accounts'</span> <span class="se">\</span>
+  <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-d</span> <span class="s1">'{
-  "currencyId": "string",
-  "number": "string"
+"authorizationCode": "string"
 }'</span>
 </code></pre></div>
 <blockquote>
@@ -824,29 +905,28 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-09T11:27:45.513Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-09T11:27:45.513Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"transactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"network"</span><span class="p">:</span><span class="w"> </span><span class="s2">"flip"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"addressName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"feeAmount"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"prefix"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"beneficiaryId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"referenceData"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
-<p>There are four steps to execute Withdraws:</p>
-
-<p>Step 1: Create a quote</p>
-
-<p><strong>Step 2: Create a recipient account</strong></p>
-
-<p>Step 3: Create a transfer</p>
-
-<p>Step 4: Fund a transfer</p>
-
-<p>Recipient is a person or institution who is the ultimate beneficiary of your payment.</p>
-
-<p>Recipient bank account details are different for different currencies. For example, you only need to know the IBAN number to send payments to most European and Nordic countries. But in order to send money to Canada, you’d need to fill out four fields: You recipient’s institution number, transit number, account number, and account type.</p>
+<p>Withdraw Confirmation</p>
 
 <p><strong>Request</strong></p>
 
-<p><code>POST http://api.stg.pazemo.com/users/{userId}/accounts</code></p>
+<p><code>POST http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm</code></p>
 
 <table><thead>
 <tr>
@@ -856,25 +936,23 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 </thead><tbody>
 <tr>
-<td>sendCurrencyId</td>
-<td>Currency Code</td>
+<td>accountID</td>
+<td>Account ID</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>receiveCurrencyId</td>
-<td>Currency Code</td>
+<td>ID</td>
+<td>ID</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>sendAmount</td>
-<td>Send Amount</td>
-<td>Decimal.</td>
+<td>authorizationCode</td>
+<td>Autorization Code</td>
+<td>Text.</td>
 </tr>
 </tbody></table>
 
 <p><strong>Response</strong></p>
-
-<p>Recipient id is needed for creating transfers in step 3</p>
 
 <table><thead>
 <tr>
@@ -885,7 +963,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </thead><tbody>
 <tr>
 <td>id</td>
-<td>Personal profile id</td>
+<td>Withdraw ID</td>
 <td>Text.</td>
 </tr>
 <tr>
@@ -894,207 +972,71 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>&quot;yyyy-mm-dd&quot;.</td>
 </tr>
 <tr>
-<td>userId</td>
-<td>User ID</td>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
 <td>Text.</td>
 </tr>
 <tr>
-<td>sendCurrencyId</td>
-<td>Currency Code</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>receiveCurrencyId</td>
-<td>Currency Code</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>sendAmount</td>
-<td>Send Amount</td>
-<td>Decimal.</td>
-</tr>
-<tr>
-<td>receiveAmount</td>
-<td>Receive Amount</td>
-<td>Decimal.</td>
+<td>transactionId</td>
+<td>Transaction ID</td>
+<td>Number.</td>
 </tr>
 <tr>
 <td>status</td>
-<td>Status</td>
+<td>WIthdraw Status</td>
 <td>Text.</td>
+</tr>
+<tr>
+<td>network</td>
+<td>Network Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>feeAmount</td>
+<td>Fee Amount</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>Notes</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>prefix</td>
+<td>Prefix</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>beneficiaryId</td>
+<td>Beneficiary ID</td>
+<td>Number.</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>Reference</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>referenceData</td>
+<td>Reference Data</td>
+<td>Object.</td>
 </tr>
 </tbody></table>
-<h2 id='create-transfer'>Create transfer</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/transfers'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-  "senderAccountId": "string",
-  "receiverAccountId": "string",
-  "quoteId": "string",
-  "senderTransactionId": 0,
-  "receiverTransactionId": 0
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-</span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-</span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-</span><span class="nl">"senderAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-</span><span class="nl">"receiverAccountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-</span><span class="nl">"quoteId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-</span><span class="nl">"senderTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-</span><span class="nl">"receiverTransactionId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>There are four steps to execute Withdraws:</p>
-
-<p>Step 1: Create a quote</p>
-
-<p>Step 2: Create a recipient account</p>
-
-<p><strong>Step 3: Create a transfer</strong></p>
-
-<p>Step 4: Fund a transfer</p>
-
-<p>A transfer is a Withdraw order you make to a recipient account based on a quote. Once created, a transfer will need to be funded within the next 14 days (7 days for email transfers) or it’ll automatically get cancelled.</p>
-
-<p><strong>Request</strong></p>
-
-<p><code>POST http://api.stg.pazemo.com/transfers</code></p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>senderAccountId</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>receiverAccountId</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>quoteId</td>
-<td>Quote ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>senderTransactionId</td>
-<td>Transaction</td>
-<td>Number.</td>
-</tr>
-<tr>
-<td>receiverTransactionId</td>
-<td>Transaction</td>
-<td>Number.</td>
-</tr>
-</tbody></table>
-
-<p>There are two options to deal with conditionally required fields:</p>
-
-<ul>
-<li>Always provide values for these fields</li>
-<li>Always call transfers-requirements endpoint and submit values only if indicated so</li>
-</ul>
-
-<p><strong>Response</strong></p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>Personal profile id</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>createdTime</td>
-<td>Creation Date</td>
-<td>&quot;yyyy-mm-dd&quot;.</td>
-</tr>
-<tr>
-<td>senderAccountId</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>receiverAccountId</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>quoteId</td>
-<td>Quote ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>senderTransactionId</td>
-<td>Transaction</td>
-<td>Number.</td>
-</tr>
-<tr>
-<td>receiverTransactionId</td>
-<td>Transaction</td>
-<td>Number.</td>
-</tr>
-</tbody></table>
-<h3 id='avoiding-duplicate-transfers'>Avoiding duplicate transfers</h3>
-<p>We use customerTransactionId field to avoid duplicate transfer requests. When your first call fails (error or timeout) then you should use the same value in customerTransactionId field that you used in the original call when you are submitting a retry message. This way we can treat subsequent retry messages as repeat messages and will not create duplicate transfers to your account.</p>
-<h2 id='fund-transfer'>Fund transfer</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.sandbox.transferPazemo.tech/v3/profiles/<span class="o">{</span>profileId<span class="o">}</span>/transfers/<span class="o">{</span>transferId<span class="o">}</span>/payments <span class="se">\</span>
-     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-     <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-     <span class="nt">-d</span> <span class="s1">'{ 
-          "type": "BALANCE"   
-         }'</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BALANCE"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"COMPLETED"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"errorCode"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>There are four steps to execute Withdraws:</p>
-
-<p>Step 1: Create a quote</p>
-
-<p>Step 2: Create a recipient account</p>
-
-<p>Step 3: Create a transfer</p>
-
-<p><strong>Step 4: Fund a transfer</strong></p>
-
-<p>This API call is the final step for executing Withdraws. Pazemo will now debit funds from your multi-currency account and start processing your transfer. If your multi-currency account does not have the required funds to complete the action then this call will fail with an &quot;insufficient funds&quot; error.</p>
-
-<p>Initial developer account has by default plentiful funds available for IDR, USD, SGD, MYR and EUR.
-You can add new currencies to your account via the user interface</p>
-
-<p>You can then top up your new currencies by converting funds from other currencies.</p>
-
-<p>Unless you are sending to a small number of recipients who you trust, it is recommended to implement the referenced measures for your integration.</p>
 <h1 id='pings'>Pings</h1><h2 id='check'>Check</h2>
 <blockquote>
 <p>Example Request:</p>
