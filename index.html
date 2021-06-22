@@ -358,16 +358,13 @@
               </ul>
           </li>
           <li>
-            <a href="#withdraw" class="toc-h1 toc-link" data-title="Withdraw">Withdraw</a>
+            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#create-withdraw" class="toc-h2 toc-link" data-title="Create Withdraw">Create Withdraw</a>
+                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
                   </li>
                   <li>
-                    <a href="#confirmation" class="toc-h2 toc-link" data-title="Confirmation">Confirmation</a>
-                  </li>
-                  <li>
-                    <a href="#cancellation" class="toc-h2 toc-link" data-title="Cancellation">Cancellation</a>
+                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
                   </li>
               </ul>
           </li>
@@ -388,13 +385,16 @@
               </ul>
           </li>
           <li>
-            <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
+            <a href="#withdraw" class="toc-h1 toc-link" data-title="Withdraw">Withdraw</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
+                    <a href="#create-withdraw" class="toc-h2 toc-link" data-title="Create Withdraw">Create Withdraw</a>
                   </li>
                   <li>
-                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
+                    <a href="#confirmation" class="toc-h2 toc-link" data-title="Confirmation">Confirmation</a>
+                  </li>
+                  <li>
+                    <a href="#cancellation" class="toc-h2 toc-link" data-title="Cancellation">Cancellation</a>
                   </li>
               </ul>
           </li>
@@ -597,6 +597,386 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <tr>
 <td>SANDBOX API</td>
 <td><code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code></td>
+</tr>
+</tbody></table>
+<h1 id='users'>Users</h1><h2 id='get-by-id'>Get by ID</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/{userid}"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"partnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"string"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"configs"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get authenticated user details by user id. Response includes also personal user profile info.</p>
+<h3 id='request'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/users/{userid}</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>User ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Created Date</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Updated Date</td>
+<td>date-time</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>User email</td>
+<td>email</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>User mobile</td>
+<td>string</td>
+</tr>
+<tr>
+<td>name</td>
+<td>User name</td>
+<td>string</td>
+</tr>
+<tr>
+<td>partnerId</td>
+<td>Parter ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>roles</td>
+<td>User Role</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+ <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get authenticated user details for the user&#39;s token submitted in the Authorization header. Response includes also personal user profile info.</p>
+<h3 id='request-2'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/users/me</code></p>
+<h3 id='response-2'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>User ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>User email</td>
+<td>email</td>
+</tr>
+<tr>
+<td>name</td>
+<td>User name</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h1 id='accounts'>Accounts</h1>
+<p>Create a Multy-Currency Account: Indonesian Rupiah (IDR), US Dollar (USD), Singapore Dollar (SGD), Malaysian Ringgit (MYR), Euro (EUR).</p>
+
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/account-list.jpg"></p>
+<h2 id='create-account'>Create Account</h2>
+<p>You can create account from sidebar menu and click <code>+ New Account</code>, then select from available currencies provided.</p>
+
+<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/create-account.jpg"></p>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+        <span class="nt">-d</span> <span class="s1">'{
+  "currencyId": "string",
+  "number": "string"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create New Account</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>POST http://api.stg.pazemo.com/users/{userId}/accounts</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userID</td>
+<td>User ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>currencyId</td>
+<td>Currency ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>number</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Creation Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>currencyId</td>
+<td>Currency ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Number</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+<h1 id='recipients'>Recipients</h1><h2 id='create-recipients'>Create Recipients</h2>
+<p>Create a Recipients to receive withdrawal. You can add recipients with 2 ways, directly from your <code>Withdraw</code> dashboard or create from <code>Recipient Lists</code> dashboard.</p>
+<h3 id='create-recipient-in-withdraw-dashboard'>Create Recipient in Withdraw Dashboard</h3>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></a></p>
+
+<p>After select currency account, select <code>New Address</code>, select available Banks, then input number and name for your new recipient, so you next time can use it from <code>Recipients list</code> easily.</p>
+<h3 id='create-recipient-in-recipients-dashboard'>Create Recipient in Recipients Dashboard</h3>
+<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></a></p>
+
+<p>Another way to create Recipients, from sidebar menu click <code>Recipients</code>, <code>+ ADD NEW RECIPIENT</code> then select from available currencies and banks provided then fill account number and label.</p>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/beneficiaries'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+      <span class="nt">-d</span> <span class="s1">'{
+  "updatedTime": "2019-08-24T14:15:22Z",
+  "accountId": "string",
+  "bankId": "string",
+  "address": "string",
+  "email": "string",
+  "label": "string",
+  "type": "personal"
+}'</span>
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"bankId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Create New Recipient</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>POST http://api.stg.pazemo.com/beneficiaries</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>updatedTime</td>
+<td>Updated Time</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>bankId</td>
+<td>Bank ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>Label</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Recipient ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>bankId</td>
+<td>Bank ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>address</td>
+<td>Address</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>name</td>
+<td>Name</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>email</td>
+<td>Email</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>label</td>
+<td>Label</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>status</td>
+<td>Status</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>Type</td>
+<td>Text.</td>
 </tr>
 </tbody></table>
 <h1 id='withdraw'>Withdraw</h1>
@@ -807,11 +1187,10 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+      <span class="nt">-d</span> <span class="s1">'{
 "authorizationCode": "string"
 }'</span>
 </code></pre></div>
@@ -956,11 +1335,10 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel'</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+      <span class="nt">-d</span> <span class="s1">'{
 "authorizationCode": "string"
 }'</span>
 </code></pre></div>
@@ -1099,388 +1477,6 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>referenceData</td>
 <td>Reference Data</td>
 <td>Object.</td>
-</tr>
-</tbody></table>
-<h1 id='accounts'>Accounts</h1>
-<p>Create a Multy-Currency Account: Indonesian Rupiah (IDR), US Dollar (USD), Singapore Dollar (SGD), Malaysian Ringgit (MYR), Euro (EUR).</p>
-
-<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/account-list.jpg"></p>
-<h2 id='create-account'>Create Account</h2>
-<p>You can create account from sidebar menu and click <code>+ New Account</code>, then select from available currencies provided.</p>
-
-<p><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/create-account.jpg"></p>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-  "currencyId": "string",
-  "number": "string"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-08-24T14:15:22Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Create New Account</p>
-
-<p><strong>Request</strong></p>
-
-<p><code>POST http://api.stg.pazemo.com/users/{userId}/accounts</code></p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userID</td>
-<td>User ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>currencyId</td>
-<td>Currency ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>number</td>
-<td>number</td>
-<td>Text.</td>
-</tr>
-</tbody></table>
-
-<p><strong>Response</strong></p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>createdTime</td>
-<td>Creation Date</td>
-<td>&quot;yyyy-mm-dd&quot;.</td>
-</tr>
-<tr>
-<td>updatedTime</td>
-<td>Update Date</td>
-<td>&quot;yyyy-mm-dd&quot;.</td>
-</tr>
-<tr>
-<td>currencyId</td>
-<td>Currency ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>number</td>
-<td>Number</td>
-<td>Text.</td>
-</tr>
-</tbody></table>
-<h1 id='recipients'>Recipients</h1><h2 id='create-recipients'>Create Recipients</h2>
-<p>Create a Recipients to receive withdrawal. You can add recipients with 2 ways, directly from your <code>Withdraw</code> dashboard or create from <code>Recipient Lists</code> dashboard.</p>
-<h3 id='create-recipient-in-withdraw-dashboard'>Create Recipient in Withdraw Dashboard</h3>
-<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients-withdraw.jpg"></a></p>
-
-<p>After select currency account, select <code>New Address</code>, select available Banks, then input number and name for your new recipient, so you next time can use it from <code>Recipients list</code> easily.</p>
-<h3 id='create-recipient-in-recipients-dashboard'>Create Recipient in Recipients Dashboard</h3>
-<p><a href="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg" target="_blank" title="Click To View Full Screen Image In New Tab"><img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/add-recipients.jpg"></a></p>
-
-<p>Another way to create Recipients, from sidebar menu click <code>Recipients</code>, <code>+ ADD NEW RECIPIENT</code> then select from available currencies and banks provided then fill account number and label.</p>
-
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> <span class="s1">'POST'</span> <span class="se">\</span>
-  <span class="s1">'http://api.stg.pazemo.com/beneficiaries'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
-  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-  <span class="nt">-d</span> <span class="s1">'{
-  "updatedTime": "2019-08-24T14:15:22Z",
-  "accountId": "string",
-  "bankId": "string",
-  "address": "string",
-  "email": "string",
-  "label": "string",
-  "type": "personal"
-}'</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"accountId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"bankId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pending"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"personal"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Create New Recipient</p>
-
-<p><strong>Request</strong></p>
-
-<p><code>POST http://api.stg.pazemo.com/beneficiaries</code></p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>updatedTime</td>
-<td>Updated Time</td>
-<td>&quot;yyyy-mm-dd&quot;.</td>
-</tr>
-<tr>
-<td>accountId</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>bankId</td>
-<td>Bank ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>address</td>
-<td>Address</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Name</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>label</td>
-<td>Label</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Status</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Type</td>
-<td>Text.</td>
-</tr>
-</tbody></table>
-
-<p><strong>Response</strong></p>
-
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>Recipient ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>accountId</td>
-<td>Account ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>bankId</td>
-<td>Bank ID</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>address</td>
-<td>Address</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>name</td>
-<td>Name</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>email</td>
-<td>Email</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>label</td>
-<td>Label</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Status</td>
-<td>Text.</td>
-</tr>
-<tr>
-<td>type</td>
-<td>Type</td>
-<td>Text.</td>
-</tr>
-</tbody></table>
-<h1 id='users'>Users</h1><h2 id='get-by-id'>Get by ID</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/{userid}"</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1970-01-01T00:00:00.000Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"partnerId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"string"</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"configs"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get authenticated user details by user id. Response includes also personal user profile info.</p>
-<h3 id='request'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/users/{userid}</code></p>
-<h3 id='response'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>User ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>createdTime</td>
-<td>Created Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>updatedTime</td>
-<td>Updated Date</td>
-<td>date-time</td>
-</tr>
-<tr>
-<td>status</td>
-<td>Status</td>
-<td>string</td>
-</tr>
-<tr>
-<td>email</td>
-<td>User email</td>
-<td>email</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>User mobile</td>
-<td>string</td>
-</tr>
-<tr>
-<td>name</td>
-<td>User name</td>
-<td>string</td>
-</tr>
-<tr>
-<td>partnerId</td>
-<td>Parter ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>roles</td>
-<td>User Role</td>
-<td>string</td>
-</tr>
-</tbody></table>
-<h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get authenticated user details for the user&#39;s token submitted in the Authorization header. Response includes also personal user profile info.</p>
-<h3 id='request-2'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/users/me</code></p>
-<h3 id='response-2'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>User ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>email</td>
-<td>User email</td>
-<td>email</td>
-</tr>
-<tr>
-<td>name</td>
-<td>User name</td>
-<td>string</td>
 </tr>
 </tbody></table>
 <h1 id='pings'>Pings</h1><h2 id='check'>Check</h2>
