@@ -24,7 +24,7 @@ Using the product before integrating with our API will help you understand how o
 
 ## Choose the best tool for you
 
-- You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:
+You don’t necessarily need to integrate with the API to make a large number of withdraws. We have two ways you can do it:
 
 - Batch payments. Create and send up to 1,000 transfers with just one payment using our Batch Payments tool. All you need to do is fill a CSV file with all the transfer details, upload it to Pazemo, and pay for the batch. No development effort needed.
 

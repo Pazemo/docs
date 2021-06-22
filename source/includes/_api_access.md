@@ -136,10 +136,8 @@ The option for toggling the check yourself will also be available in production 
 
 ## Environments
 
-- The LIVE API is located at
 
-<code><a href="https://api.pazemo.com/">https://api.pazemo.com/</a></code>
-
-- The SANDBOX API is located at
-
-<code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code>
+SERVER | Base URL
+-------|--------|
+LIVE API | <code><a href="https://api.pazemo.com/">https://api.pazemo.com/</a></code>
+SANDBOX API | <code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code>
