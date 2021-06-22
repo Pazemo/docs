@@ -2,10 +2,8 @@
 title: API Reference Pazemo
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
-  - javascript
+  - shell: Example
+
 
 toc_footers:
   - <a href='https://pazemo.com/signup'>Sign Up for a API Key</a>

@@ -1,6 +1,6 @@
 # Accounts
 
-Create a Multy-Currency Account: Indonesian Rupiah (IDR), US DOllar (USD), Singapore Dollar (SGD), Malaysian Ringgit (MYR), Euro (EUR).
+Create a Multy-Currency Account: Indonesian Rupiah (IDR), US Dollar (USD), Singapore Dollar (SGD), Malaysian Ringgit (MYR), Euro (EUR).
 
 <img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/account-list.jpg">
 
@@ -43,6 +43,7 @@ Create New Account
 Field | Description | Format
 --------- | ------- | -----------
 userID | User ID | Text.
+currencyId | Currency ID | Text.
 number | number | Text.
 
 **Response**
