@@ -12,10 +12,10 @@ toc_footers:
 includes:
   - getting_started
   - api_access
-  - withdraw
+  - users
   - accounts
   - recipients
-  - users
+  - withdraw
   - ping
   - errors
 

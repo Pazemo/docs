@@ -19,11 +19,10 @@ Another way to create Recipients, from sidebar menu click `Recipients`, `+ ADD N
 > Example Request:
 
 ```shell
-curl -X 'POST' \
-  'http://api.stg.pazemo.com/beneficiaries' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
+curl  -X POST 'http://api.stg.pazemo.com/beneficiaries' \
+      -H 'accept: application/json' \
+      -H 'Content-Type: application/json' \
+      -d '{
   "updatedTime": "2019-08-24T14:15:22Z",
   "accountId": "string",
   "bankId": "string",

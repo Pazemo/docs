@@ -97,11 +97,10 @@ referenceData | Reference Data | Object.
 > Example Request:
 
 ```shell
-curl -X 'POST' \
-  'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
+curl  -X POST 'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm' \
+      -H "Accept: application/json" \
+      -H "Authorization: Bearer <your api token>"
+      -d '{
 "authorizationCode": "string"
 }'
 ```
@@ -165,11 +164,10 @@ referenceData | Reference Data | Object.
 > Example Request:
 
 ```shell
-curl -X 'POST' \
-  'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel' \
-  -H 'accept: application/json' \
-  -H 'Content-Type: application/json' \
-  -d '{
+curl  -X POST 'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel' \
+      -H "Accept: application/json" \
+      -H "Authorization: Bearer <your api token>"
+      -d '{
 "authorizationCode": "string"
 }'
 ```
