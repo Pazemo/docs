@@ -8,7 +8,7 @@ Create a Multy-Currency Account: Indonesian Rupiah (IDR), US DOllar (USD), Singa
 
 You can create account from sidebar menu and click `+ New Account`, then select from available currencies provided.
 
-<img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/account-list.jpg">
+<img src="https://raw.githubusercontent.com/Pazemo/docs/main/source/images/create-account.jpg">
 
 > Example Request:
 
