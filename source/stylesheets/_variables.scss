@@ -23,7 +23,7 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #2E3336 !default;
+$nav-bg: #fff !default;
 $examples-bg: #2E3336 !default;
 $code-bg: #1E2224 !default;
 $code-annotation-bg: #191D1F !default;
@@ -44,12 +44,12 @@ $search-notice-bg: #c97a7e !default;
 // TEXT COLORS
 ////////////////////
 $main-text: #333 !default; // main content text color
-$nav-text: #fff !default;
-$nav-active-text: #fff !default;
-$nav-active-parent-text: #fff !default; // parent links of the current section
-$lang-select-text: #fff !default; // color of unselected language tab text
-$lang-select-active-text: #fff !default; // color of selected language tab text
-$lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed
+$nav-text: #000 !default;
+$nav-active-text: #000 !default;
+$nav-active-parent-text: #000 !default; // parent links of the current section
+$lang-select-text: #000 !default; // color of unselected language tab text
+$lang-select-active-text: #000 !default; // color of selected language tab text
+$lang-select-pressed-text: #000 !default; // color of language tab text when mouse is pressed
 
 
 // SIZES
