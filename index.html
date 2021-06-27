@@ -282,7 +282,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-a25364e2.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-021ced83.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-a9fde460.js"></script>
 
@@ -291,7 +291,7 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;php&quot;,&quot;javascript&quot;,&quot;python&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -301,7 +301,10 @@
     <div class="toc-wrapper">
       <img src="images/logo-fc28581b.png" class="logo" alt="" />
         <div class="lang-selector">
-              <a href="#" data-language-name="shell">Request & Response Examples</a>
+              <a href="#" data-language-name="shell">cURL</a>
+              <a href="#" data-language-name="php">PHP</a>
+              <a href="#" data-language-name="javascript">JavaScript</a>
+              <a href="#" data-language-name="python">Python</a>
         </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -679,9 +682,9 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -731,13 +734,13 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>   curl <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
         <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
         <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
         <span class="nt">-d</span> <span class="s1">'{
-  "currencyId": "string",
-  "number": "string"
-}'</span>
+             "currencyId": "string",
+             "number": "string"
+            }'</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -833,14 +836,14 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
       <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
       <span class="nt">-d</span> <span class="s1">'{
-  "updatedTime": "2019-08-24T14:15:22Z",
-  "accountId": "string",
-  "bankId": "string",
-  "address": "string",
-  "email": "string",
-  "label": "string",
-  "type": "personal"
-}'</span>
+            "updatedTime": "2019-08-24T14:15:22Z",
+            "accountId": "string",
+            "bankId": "string",
+            "address": "string",
+            "email": "string",
+            "label": "string",
+            "type": "personal"
+        }'</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -988,18 +991,18 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
       <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
       <span class="nt">-d</span> <span class="s2">"{
-  "</span><span class="nb">id</span><span class="s2">": "</span>string<span class="s2">",
-  "</span>updatedTime<span class="s2">": "</span>2019-08-24T14:15:22Z<span class="s2">",
-  "</span>accountId<span class="s2">": "</span>string<span class="s2">",
-  "</span>address<span class="s2">": "</span>string<span class="s2">",
-  "</span>addressName<span class="s2">": "</span>string<span class="s2">",
-  "</span>amount<span class="s2">": 0,
-  "</span>notes<span class="s2">": "</span>string<span class="s2">",
-  "</span>prefix<span class="s2">": "</span>string<span class="s2">",
-  "</span>beneficiaryId<span class="s2">": 0,
-  "</span>reference<span class="s2">": "</span>string<span class="s2">",
-  "</span>referenceData<span class="s2">": {}
-}"</span>
+            "</span><span class="nb">id</span><span class="s2">": "</span>string<span class="s2">",
+            "</span>updatedTime<span class="s2">": "</span>2019-08-24T14:15:22Z<span class="s2">",
+            "</span>accountId<span class="s2">": "</span>string<span class="s2">",
+            "</span>address<span class="s2">": "</span>string<span class="s2">",
+            "</span>addressName<span class="s2">": "</span>string<span class="s2">",
+            "</span>amount<span class="s2">": 0,
+            "</span>notes<span class="s2">": "</span>string<span class="s2">",
+            "</span>prefix<span class="s2">": "</span>string<span class="s2">",
+            "</span>beneficiaryId<span class="s2">": 0,
+            "</span>reference<span class="s2">": "</span>string<span class="s2">",
+            "</span>referenceData<span class="s2">": {}
+        }"</span>
 </code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
@@ -1477,8 +1480,8 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/check"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+     <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -1528,8 +1531,8 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/ping"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> 
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/ping"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> 
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -1545,9 +1548,9 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/pingQueue"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
- <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/pingQueue"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -1692,7 +1695,10 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
       </div>
       <div class="dark-box">
           <div class="lang-selector">
-                <a href="#" data-language-name="shell">Request & Response Examples</a>
+                <a href="#" data-language-name="shell">cURL</a>
+                <a href="#" data-language-name="php">PHP</a>
+                <a href="#" data-language-name="javascript">JavaScript</a>
+                <a href="#" data-language-name="python">Python</a>
           </div>
       </div>
     </div>
