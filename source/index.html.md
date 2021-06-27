@@ -4,8 +4,7 @@ title: Pazemo Docs
 language_tabs:
   - shell: cURL
   - php: PHP
-  - javascript: JavaScript
-  - python: Python
+  - javascript: JS
 
 toc_footers:
   - <a href='https://pazemo.com/signup'>Sign Up for a API Key</a>
