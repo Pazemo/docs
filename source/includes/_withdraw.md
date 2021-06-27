@@ -17,18 +17,18 @@ curl  -X POST "http://api.stg.pazemo.com/accounts/{accountId}/withdraw" \
       -H "Accept: application/json" \
       -H "Authorization: Bearer <your api token>"
       -d "{
-  "id": "string",
-  "updatedTime": "2019-08-24T14:15:22Z",
-  "accountId": "string",
-  "address": "string",
-  "addressName": "string",
-  "amount": 0,
-  "notes": "string",
-  "prefix": "string",
-  "beneficiaryId": 0,
-  "reference": "string",
-  "referenceData": {}
-}"
+            "id": "string",
+            "updatedTime": "2019-08-24T14:15:22Z",
+            "accountId": "string",
+            "address": "string",
+            "addressName": "string",
+            "amount": 0,
+            "notes": "string",
+            "prefix": "string",
+            "beneficiaryId": 0,
+            "reference": "string",
+            "referenceData": {}
+        }"
 ```
 
 > The above command returns JSON structured like this:

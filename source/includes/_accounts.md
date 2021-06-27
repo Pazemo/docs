@@ -13,13 +13,13 @@ You can create account from sidebar menu and click `+ New Account`, then select 
 > Example Request:
 
 ```shell
-curl    -X POST 'http://api.stg.pazemo.com/users/{userId}/accounts' \
+   curl -X POST 'http://api.stg.pazemo.com/users/{userId}/accounts' \
         -H "Accept: application/json" \
         -H "Authorization: Bearer <your api token>"
         -d '{
-  "currencyId": "string",
-  "number": "string"
-}'
+             "currencyId": "string",
+             "number": "string"
+            }'
 ```
 
 > Example Response:

@@ -6,9 +6,10 @@
 
 ```shell
 curl -X GET "http://api.stg.pazemo.com/check" \
- -H "Accept: application/json" \
- -H "Authorization: Bearer <your api token>" \
+     -H "Accept: application/json" \
+     -H "Authorization: Bearer <your api token>" \
 ```
+
 >Example Response:
 
 ```json
@@ -41,8 +42,8 @@ Content-Type | Content Type | string
 >Example Request:
 
 ```shell
-curl -X GET "http://api.stg.pazemo.com/ping" \
- -H "Authorization: Bearer <your api token>" 
+curl    -X GET "http://api.stg.pazemo.com/ping" \
+        -H "Authorization: Bearer <your api token>" 
 ```
 
 >Example Response:
@@ -66,9 +67,9 @@ Return value of PingController.ping
 >Example Request:
 
 ```shell
-curl -X GET "http://api.stg.pazemo.com/pingQueue" \
- -H "Accept: application/json" \
- -H "Authorization: Bearer <your api token>" \
+curl    -X GET "http://api.stg.pazemo.com/pingQueue" \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer <your api token>" \
 ```
 
 >Example Response:

@@ -1,9 +1,11 @@
 ---
 title: Pazemo Docs
 
-language_tabs: # must be one of https://git.io/vQNgJ
-  - shell: Request & Response Examples
-
+language_tabs:
+  - shell: cURL
+  - php: PHP
+  - javascript: JavaScript
+  - python: Python
 
 toc_footers:
   - <a href='https://pazemo.com/signup'>Sign Up for a API Key</a>

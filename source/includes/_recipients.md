@@ -23,14 +23,14 @@ curl  -X POST 'http://api.stg.pazemo.com/beneficiaries' \
       -H 'accept: application/json' \
       -H 'Content-Type: application/json' \
       -d '{
-  "updatedTime": "2019-08-24T14:15:22Z",
-  "accountId": "string",
-  "bankId": "string",
-  "address": "string",
-  "email": "string",
-  "label": "string",
-  "type": "personal"
-}'
+            "updatedTime": "2019-08-24T14:15:22Z",
+            "accountId": "string",
+            "bankId": "string",
+            "address": "string",
+            "email": "string",
+            "label": "string",
+            "type": "personal"
+        }'
 ```
 
 > Example Response:

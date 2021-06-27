@@ -52,9 +52,9 @@ roles | User Role | string
 >Example Request:
 
 ```shell
-curl -X GET "http://api.stg.pazemo.com/users/me" \
- -H "Accept: application/json" \
- -H "Authorization: Bearer <your api token>" \
+curl    -X GET "http://api.stg.pazemo.com/users/me" \
+        -H "Accept: application/json" \
+        -H "Authorization: Bearer <your api token>" \
 ```
 
 >Example Response:
