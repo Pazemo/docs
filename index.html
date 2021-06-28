@@ -360,10 +360,10 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
+                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
                   </li>
                   <li>
-                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
+                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
                   </li>
               </ul>
           </li>
@@ -372,6 +372,12 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#create-account" class="toc-h2 toc-link" data-title="Create Account">Create Account</a>
+                  </li>
+                  <li>
+                    <a href="#get-accounts-info" class="toc-h2 toc-link" data-title="Get Accounts Info">Get Accounts Info</a>
+                  </li>
+                  <li>
+                    <a href="#get-account-info-by-id" class="toc-h2 toc-link" data-title="Get Account Info by ID">Get Account Info by ID</a>
                   </li>
               </ul>
           </li>
@@ -594,13 +600,103 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td><code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code></td>
 </tr>
 </tbody></table>
-<h1 id='users'>Users</h1><h2 id='get-by-id'>Get by ID</h2>
+<h1 id='users'>Users</h1><h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s1">'http://api.stg.pazemo.com/users/me'</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="no">CURLOPT_FOLLOWLOCATION</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization: Bearer &lt;your api token&gt;'</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get authenticated user details for the user&#39;s token submitted in the Authorization header. Response includes also personal user profile info.</p>
+<h3 id='request'>Request</h3>
+<p><code>GET http://api.stg.pazemo.com/users/me</code></p>
+<h3 id='response'>Response</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>User ID</td>
+<td>string</td>
+</tr>
+<tr>
+<td>email</td>
+<td>User email</td>
+<td>email</td>
+</tr>
+<tr>
+<td>name</td>
+<td>User name</td>
+<td>string</td>
+</tr>
+</tbody></table>
+<h2 id='get-by-id'>Get by ID</h2>
 <blockquote>
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/{userid}"</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s1">'http://api.stg.pazemo.com/users/{userid}'</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="no">CURLOPT_FOLLOWLOCATION</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization: Bearer &lt;your api token&gt;'</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+
 </code></pre></div>
 <blockquote>
 <p>Example Response:</p>
@@ -621,9 +717,9 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>Get authenticated user details by user id. Response includes also personal user profile info.</p>
-<h3 id='request'>Request</h3>
+<h3 id='request-2'>Request</h3>
 <p><code>GET http://api.stg.pazemo.com/users/{userid}</code></p>
-<h3 id='response'>Response</h3>
+<h3 id='response-2'>Response</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -677,50 +773,6 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>string</td>
 </tr>
 </tbody></table>
-<h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
-<blockquote>
-<p>Example Request:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/users/me"</span> <span class="se">\</span>
-        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
-        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> <span class="se">\</span>
-</code></pre></div>
-<blockquote>
-<p>Example Response:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>Get authenticated user details for the user&#39;s token submitted in the Authorization header. Response includes also personal user profile info.</p>
-<h3 id='request-2'>Request</h3>
-<p><code>GET http://api.stg.pazemo.com/users/me</code></p>
-<h3 id='response-2'>Response</h3>
-<table><thead>
-<tr>
-<th>Field</th>
-<th>Description</th>
-<th>Format</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>User ID</td>
-<td>string</td>
-</tr>
-<tr>
-<td>email</td>
-<td>User email</td>
-<td>email</td>
-</tr>
-<tr>
-<td>name</td>
-<td>User name</td>
-<td>string</td>
-</tr>
-</tbody></table>
 <h1 id='accounts'>Accounts</h1>
 <p>Create a Multy-Currency Account: Indonesian Rupiah (IDR), US Dollar (USD), Singapore Dollar (SGD), Malaysian Ringgit (MYR), Euro (EUR).</p>
 
@@ -734,7 +786,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>   curl <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
-        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
         <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
         <span class="nt">-d</span> <span class="s1">'{
              "currencyId": "string",
@@ -777,7 +829,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 <tr>
 <td>number</td>
-<td>number</td>
+<td>Account Number</td>
 <td>Text.</td>
 </tr>
 </tbody></table>
@@ -813,8 +865,249 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 </tr>
 <tr>
 <td>number</td>
-<td>Number</td>
+<td>Account Number</td>
 <td>Text.</td>
+</tr>
+</tbody></table>
+<h2 id='get-accounts-info'>Get Accounts Info</h2>
+<p>Get information from all your available multy-currency accounts.</p>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>   curl <span class="nt">-X</span> GET <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts'</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="no">CURLOPT_FOLLOWLOCATION</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization: Bearer &lt;your api token&gt;'</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:25.871Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:25.871Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112456475114"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:17.167Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:17.168Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"IDR"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11286762273"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">948775.42</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">-84311</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:30.137Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:30.137Z"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SGD"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112826187955"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mf">9.1</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>Get Accounts Info</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET http://api.stg.pazemo.com/users/{userId}/accounts</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userID</td>
+<td>User ID</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Creation Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>currencyId</td>
+<td>Currency ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Account Number</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>Account Balance</td>
+<td>Number.</td>
+</tr>
+</tbody></table>
+<h2 id='get-account-info-by-id'>Get Account Info by ID</h2>
+<p>Get information from your accounts by ID</p>
+
+<blockquote>
+<p>Example Request:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>   curl <span class="nt">-X</span> GET <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts/{id}'</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
+</code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$curl</span> <span class="o">=</span> <span class="nb">curl_init</span><span class="p">();</span>
+
+<span class="nb">curl_setopt_array</span><span class="p">(</span><span class="nv">$curl</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span>
+  <span class="no">CURLOPT_URL</span> <span class="o">=&gt;</span> <span class="s1">'http://api.stg.pazemo.com/users/{userId}/accounts/{id}'</span><span class="p">,</span>
+  <span class="no">CURLOPT_RETURNTRANSFER</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_ENCODING</span> <span class="o">=&gt;</span> <span class="s1">''</span><span class="p">,</span>
+  <span class="no">CURLOPT_MAXREDIRS</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+  <span class="no">CURLOPT_TIMEOUT</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="no">CURLOPT_FOLLOWLOCATION</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTP_VERSION</span> <span class="o">=&gt;</span> <span class="no">CURL_HTTP_VERSION_1_1</span><span class="p">,</span>
+  <span class="no">CURLOPT_CUSTOMREQUEST</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+  <span class="no">CURLOPT_HTTPHEADER</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s1">'Authorization: Bearer &lt;your api token&gt;'</span>
+  <span class="p">),</span>
+<span class="p">));</span>
+
+<span class="nv">$response</span> <span class="o">=</span> <span class="nb">curl_exec</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+
+<span class="nb">curl_close</span><span class="p">(</span><span class="nv">$curl</span><span class="p">);</span>
+<span class="k">echo</span> <span class="nv">$response</span><span class="p">;</span>
+
+</code></pre></div>
+<blockquote>
+<p>Example Response:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"createdTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:25.871Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"updatedTime"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-11T03:56:25.871Z"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"userId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"string"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"currencyId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"112456475114"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"locked"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>Get Accounts Info by ID</p>
+
+<p><strong>Request</strong></p>
+
+<p><code>GET http://api.stg.pazemo.com/users/{userId}/accounts/{id}</code></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>userID</td>
+<td>User ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>id</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+</tbody></table>
+
+<p><strong>Response</strong></p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+<th>Format</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>Account ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>createdTime</td>
+<td>Creation Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>updatedTime</td>
+<td>Update Date</td>
+<td>&quot;yyyy-mm-dd&quot;.</td>
+</tr>
+<tr>
+<td>currencyId</td>
+<td>Currency ID</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>number</td>
+<td>Account Number</td>
+<td>Text.</td>
+</tr>
+<tr>
+<td>balance</td>
+<td>Account Balance</td>
+<td>Number.</td>
 </tr>
 </tbody></table>
 <h1 id='recipients'>Recipients</h1><h2 id='create-recipients'>Create Recipients</h2>
