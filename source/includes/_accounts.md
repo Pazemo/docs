@@ -33,7 +33,6 @@ You can create account from sidebar menu and click `+ New Account`, then select 
   "number": "string"
 }
 ```
-Create New Account
 
 **Request**
 
@@ -129,7 +128,6 @@ echo $response;
     }
 ]
 ```
-Get Accounts Info
 
 **Request**
 
@@ -202,7 +200,6 @@ echo $response;
     "locked": 0
 }
 ```
-Get Accounts Info by ID
 
 **Request**
 

@@ -2,6 +2,8 @@
 
 ## Get the currently logged in user
 
+Get authenticated user details for the loged in user's. Response includes also personal user profile info.
+
 >Example Request:
 
 ```shell
@@ -46,8 +48,6 @@ echo $response;
 }
 ```
 
-Get authenticated user details for the user's token submitted in the Authorization header. Response includes also personal user profile info.
-
 ### Request
 
 <code>GET http://api.stg.pazemo.com/users/me</code>
@@ -61,6 +61,8 @@ email | User email | email
 name | User name | string
 
 ## Get by ID
+
+Get authenticated user details by user id. Response includes also personal user profile info.
 
 >Example Request:
 
@@ -114,7 +116,6 @@ echo $response;
   "configs": {}
 }
 ```
-Get authenticated user details by user id. Response includes also personal user profile info.
 
 ### Request
 
