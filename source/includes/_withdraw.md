@@ -14,7 +14,7 @@ From your main dashboard, go to `Withdraw` dashboard from sidebar menu, select a
 
 ```shell
 curl  -X POST "http://api.stg.pazemo.com/accounts/{accountId}/withdraw" \
-      -H "Accept: application/json" \
+      -H "Content-Type: application/json" \
       -H "Authorization: Bearer <your api token>"
       -d "{
             "id": "string",
@@ -98,7 +98,7 @@ referenceData | Reference Data | Object.
 
 ```shell
 curl  -X POST 'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm' \
-      -H "Accept: application/json" \
+      -H "Content-Type: application/json" \
       -H "Authorization: Bearer <your api token>"
       -d '{
 "authorizationCode": "string"
@@ -165,7 +165,7 @@ referenceData | Reference Data | Object.
 
 ```shell
 curl  -X POST 'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel' \
-      -H "Accept: application/json" \
+      -H "Content-Type: application/json" \
       -H "Authorization: Bearer <your api token>"
       -d '{
 "authorizationCode": "string"

@@ -1,6 +1,6 @@
 # Users
 
-## Get the currently logged in user
+## Get currently logged in user
 
 Get authenticated user details for the loged in user's. Response includes also personal user profile info.
 
@@ -60,7 +60,7 @@ id | User ID| string
 email | User email | email
 name | User name | string
 
-## Get by ID
+## Get User Info by ID
 
 Get authenticated user details by user id. Response includes also personal user profile info.
 

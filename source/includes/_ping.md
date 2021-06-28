@@ -43,6 +43,7 @@ Content-Type | Content Type | string
 
 ```shell
 curl    -X GET "http://api.stg.pazemo.com/ping" \
+        -H "Accept: application/json" \
         -H "Authorization: Bearer <your api token>" 
 ```
 
