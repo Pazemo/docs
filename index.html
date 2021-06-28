@@ -360,10 +360,10 @@
             <a href="#users" class="toc-h1 toc-link" data-title="Users">Users</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-the-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get the currently logged in user">Get the currently logged in user</a>
+                    <a href="#get-currently-logged-in-user" class="toc-h2 toc-link" data-title="Get currently logged in user">Get currently logged in user</a>
                   </li>
                   <li>
-                    <a href="#get-by-id" class="toc-h2 toc-link" data-title="Get by ID">Get by ID</a>
+                    <a href="#get-user-info-by-id" class="toc-h2 toc-link" data-title="Get User Info by ID">Get User Info by ID</a>
                   </li>
               </ul>
           </li>
@@ -600,7 +600,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td><code><a href="https://api.stg.pazemo.com/">https://api.stg.pazemo.com/</a></code></td>
 </tr>
 </tbody></table>
-<h1 id='users'>Users</h1><h2 id='get-the-currently-logged-in-user'>Get the currently logged in user</h2>
+<h1 id='users'>Users</h1><h2 id='get-currently-logged-in-user'>Get currently logged in user</h2>
 <p>Get authenticated user details for the loged in user&#39;s. Response includes also personal user profile info.</p>
 
 <blockquote>
@@ -667,7 +667,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <td>string</td>
 </tr>
 </tbody></table>
-<h2 id='get-by-id'>Get by ID</h2>
+<h2 id='get-user-info-by-id'>Get User Info by ID</h2>
 <p>Get authenticated user details by user id. Response includes also personal user profile info.</p>
 
 <blockquote>
@@ -1119,7 +1119,6 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/beneficiaries'</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s1">'accept: application/json'</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
       <span class="nt">-d</span> <span class="s1">'{
             "updatedTime": "2019-08-24T14:15:22Z",
@@ -1274,7 +1273,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s2">"http://api.stg.pazemo.com/accounts/{accountId}/withdraw"</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
       <span class="nt">-d</span> <span class="s2">"{
             "</span><span class="nb">id</span><span class="s2">": "</span>string<span class="s2">",
@@ -1470,7 +1469,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/confirm'</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
       <span class="nt">-d</span> <span class="s1">'{
 "authorizationCode": "string"
@@ -1618,7 +1617,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl  <span class="nt">-X</span> POST <span class="s1">'http://api.stg.pazemo.com/accounts/{accountId}/withdraw/{id}/cancel'</span> <span class="se">\</span>
-      <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
       <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span>
       <span class="nt">-d</span> <span class="s1">'{
 "authorizationCode": "string"
@@ -1818,6 +1817,7 @@ $ chown myapp:root .env &amp;&amp; chmod 600 .env
 <p>Example Request:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl    <span class="nt">-X</span> GET <span class="s2">"http://api.stg.pazemo.com/ping"</span> <span class="se">\</span>
+        <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span> <span class="se">\</span>
         <span class="nt">-H</span> <span class="s2">"Authorization: Bearer &lt;your api token&gt;"</span> 
 </code></pre></div><div class="highlight"><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span>
 
