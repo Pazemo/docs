@@ -81,7 +81,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'GET',
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer <your api token>'
+    'Authorization: Bearer'.' '.<your api token>
   ),
 ));
 
@@ -175,7 +175,7 @@ curl_setopt_array($curl, array(
   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
   CURLOPT_CUSTOMREQUEST => 'GET',
   CURLOPT_HTTPHEADER => array(
-    'Authorization: Bearer <your api token>'
+    'Authorization: Bearer'.' '.<your api token>
   ),
 ));
 
